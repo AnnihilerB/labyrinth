@@ -61,7 +61,7 @@ public class View {
 	}
 
 	public void setOnAction() {
-		button.setOnKeyPressed(Controller.getInstance().eventHandlerButton);
+		button.setOnKeyPressed(Controller.makeInstance().eventHandlerButton);
 	}
 	
 	
