@@ -9,7 +9,7 @@ import javafx.scene.input.*;
 import javafx.stage.Stage;
 
 public class Controller {
-	private static Controller instance=new Controller();
+	private static Controller instance = null;
 	private static View view;
 	private static Model model;
 	
@@ -32,11 +32,13 @@ public class Controller {
 		model = Model.getInstance();
 	}
 	
-	public static Controller getInstance() {
+	public static Controller makeInstance() {
+		if (instance == null)
+		    instance = new Controller();
 		return instance;
 	}
 	
-	public void start(Stage primaryStage) throws Exception {
+	public static void start(Stage primaryStage) throws Exception {
 		view.start(primaryStage);
 		view.setOnAction();
 	}
