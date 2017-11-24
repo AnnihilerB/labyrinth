@@ -7,32 +7,20 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-
-
 public class LabyrinthView {
-
-    private static LabyrinthView labyrinthView = null;
-
-    private LabyrinthView(){
-
-    }
 
     static final int SPAN = 4;
     static final int WALL = 2;
     static final int CELL = 9;
     public static final Paint WALL_COLOR = Color.BURLYWOOD;
 
-    static Scene scene;
-    static Pane pane = new Pane();
+    public LabyrinthView(){
 
-    public static LabyrinthView getInstance(){
-        if (labyrinthView == null)
-            labyrinthView = new LabyrinthView();
-        return labyrinthView;
     }
 
 
-    public static void drawFrame(Stage stage, int nbrX, int nbrY) {
+
+    public static void drawFrame(Stage stage,Scene scene, Pane pane, int nbrX, int nbrY) {
         int width = ((WALL + CELL) * nbrX + WALL) * SPAN;
         int height = ((WALL + CELL) * nbrY + WALL) * SPAN;
         scene = new Scene(pane, width, height);
@@ -77,7 +65,7 @@ public class LabyrinthView {
 
     }
 
-    public static void drawWall(int xs, int ys, int xt, int yt, Paint color) {
+    public static void drawWall(Pane pane, int xs, int ys, int xt, int yt, Paint color) {
         int x = 0, y = 0, xspan = 0, yspan = 0;
         if (ys == yt) {
             x = ((WALL + CELL) + (WALL + CELL)*((int) (xs + xt) / 2))*SPAN;
@@ -99,3 +87,4 @@ public class LabyrinthView {
         }
     }
 }
+
