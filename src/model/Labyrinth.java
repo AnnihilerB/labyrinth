@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayDeque;
+import java.util.Queue;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.jgrapht.Graph;
@@ -24,10 +26,6 @@ public class Labyrinth {
 	//Constructeur privé (singleton design pattern)
 	private Labyrinth() {
 		labyrinth = new SimpleGraph(DefaultEdge.class);
-		
-		/*for (int i=0; i<16; i++)
-			for (int j=0; j<16; j++)
-				labyrinth.addVertex(new Cellule(i, j));*/
 		
 		Vertex startingCell = new Vertex();
 		labyrinth.addVertex(startingCell);
@@ -94,6 +92,32 @@ public class Labyrinth {
 			}
 		}
 	}
+	
+	/*private void calculateManhattanDistance(Vertex source, Vertex target) {
+        Queue<Vertex> fifo = new ArrayDeque<Vertex>();
+        target.setNbr(1);
+        fifo.add(target);
+        while (!fifo.isEmpty()) {
+            Vertex actual = fifo.remove();
+            for (Directions dir : Directions.values()) {
+                if (this.isOpened(actual, dir)) {
+                    Vertex next = graph.getVertexByDir(actual, dir);
+                    if (next.getNbr() == 0) {
+                        next.setNbr(actual.getNbr() + 1);
+                        if (next != source)
+                            fifo.add(next);
+                    }
+                }
+            }
+        }
+    }
+
+    public void launchManhattan(Vertex source, Vertex target) {
+        for (Vertex vertex:
+            labyrinth.vertexSet())
+            vertex.setNbr(0);
+        calculateManhattanDistance(source, target);
+    }*/
 	
 	public static Labyrinth getInstance() {
 		return instance;
