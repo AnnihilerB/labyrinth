@@ -4,6 +4,11 @@ public abstract class Element {
 	private int x;
 	private int y;
 	
+	public Element(int _x, int _y) {
+		this.x=_x;
+		this.y=_y;
+	}
+	
 	public void afficher(int x, int y) {
 		
 	}
