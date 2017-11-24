@@ -5,15 +5,17 @@ import java.util.Objects;
 public class Vertex {
 	private int x;
 	private int y;
+	private int nbr;
 	
 	
 	public Vertex() {
-		this(0, 0);
+		this(0, 0, 0);
 	}
 	
-	public Vertex(int x, int y) {
+	public Vertex(int x, int y, int nbr) {
 		this.x = x;
 		this.y = y;
+		this.nbr=nbr;
 	}
 	
 	//Sources: 
@@ -54,5 +56,12 @@ public class Vertex {
 	public void setY(int y) {
 		this.y = y;
 	}
-	
+
+    public int getNbr() {
+        return nbr;
+    }
+
+    public void setNbr(int y) {
+        this.nbr = nbr;
+    }
 }
