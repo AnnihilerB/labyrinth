@@ -9,13 +9,12 @@ public class Vertex {
 	
 	
 	public Vertex() {
-		this(0, 0, 0);
+		this(0, 0);
 	}
 	
-	public Vertex(int x, int y, int nbr) {
+	public Vertex(int x, int y) {
 		this.x = x;
 		this.y = y;
-		this.nbr=nbr;
 	}
 	
 	//Sources: 
