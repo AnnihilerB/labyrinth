@@ -6,7 +6,7 @@ public class Score {
     private int totalScore;
 
     private Score(){
-
+        totalScore = 0;
     }
 
     public static Score getInstance(){
