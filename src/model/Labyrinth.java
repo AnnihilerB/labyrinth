@@ -93,7 +93,7 @@ public class Labyrinth {
 		}
 	}
 	
-	/*private void calculateManhattanDistance(Vertex source, Vertex target) {
+	private void calculateManhattanDistance(Vertex source, Vertex target) {
         Queue<Vertex> fifo = new ArrayDeque<Vertex>();
         target.setNbr(1);
         fifo.add(target);
@@ -113,15 +113,20 @@ public class Labyrinth {
     }
 
     public void launchManhattan(Vertex source, Vertex target) {
-        for (Vertex vertex:
-            labyrinth.vertexSet())
+        for (Vertex vertex :
+                labyrinth.vertexSet())
             vertex.setNbr(0);
         calculateManhattanDistance(source, target);
-    }*/
+    }
 	
 	public static Labyrinth getInstance() {
 		return instance;
 	}
+
+    public boolean isWall  Vertex vertex, Directions dir) {
+        Edge edge = graph.getEdge(vertex, dir) ;
+        return (edge==null);
+    }
 	
 	@Override
 	public String toString() {
