@@ -2,7 +2,7 @@ package model;
 
 import java.util.Objects;
 
-public class Vertex {
+public class Vertex implements Comparable<Vertex> {
 	private int x;
 	private int y;
 	private int nbr;
@@ -20,12 +20,14 @@ public class Vertex {
 	//Sources: 
 	//https://docs.oracle.com/javase/8/docs/api/java/util/Objects.html
 	//https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
-	
+
+	//Redefinition de l'affichage en chaine de caractères
 	@Override
 	public String toString() {
 		return "(" + x + "," + y +")";
 	}
 	
+	//Méthode utilisé par SimpleGraph.containsVertex()
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Vertex)
@@ -34,10 +36,17 @@ public class Vertex {
 		
 		return false;		
 	}
-	
+
+	//Méthode utilisé par SimpleGraph.containsVertex()
 	@Override
 	public int hashCode() {
 		return Objects.hash(x, y);
+	}
+
+	//Méthode utilisé par Edge.compareTo()
+	@Override
+	public int compareTo(Vertex o) {		
+		return java.lang.Math.abs(this.x-o.getX()) + java.lang.Math.abs(this.y-o.getY());
 	}
 	
 	public int getX() {
