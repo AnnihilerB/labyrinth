@@ -60,7 +60,7 @@ public class Vertex {
         return nbr;
     }
 
-    public void setNbr(int y) {
+    public void setNbr(int nbr) {
         this.nbr = nbr;
     }
 }
