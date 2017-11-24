@@ -9,11 +9,11 @@ import javafx.stage.Stage;
 
 
 
-public class ViewFrame {
+public class LabyrinthView {
 
-    private static ViewFrame viewFrame = null;
+    private static LabyrinthView labyrinthView = null;
 
-    private ViewFrame(){
+    private LabyrinthView(){
 
     }
 
@@ -25,10 +25,10 @@ public class ViewFrame {
     static Scene scene;
     static Pane pane = new Pane();
 
-    public static ViewFrame getInstance(){
-        if (viewFrame == null)
-            viewFrame = new ViewFrame();
-        return viewFrame;
+    public static LabyrinthView getInstance(){
+        if (labyrinthView == null)
+            labyrinthView = new LabyrinthView();
+        return labyrinthView;
     }
 
 
