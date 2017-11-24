@@ -6,11 +6,11 @@ import model.Model;
 import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
-import view.LabyrinthView;
+import view.GlobalView;
 
 public class Controller {
 	private static Controller instance = null;
-	private static LabyrinthView view;
+	private static GlobalView view;
 	private static Model model;
 	
 	public static EventHandler eventHandlerButton = new EventHandler<KeyEvent>() {
@@ -28,7 +28,7 @@ public class Controller {
 	
 	
 	private Controller() {
-	    view = LabyrinthView.getInstance();
+	    view = GlobalView.getInstance();
 		model = Model.getInstance();
 	}
 	
@@ -39,10 +39,8 @@ public class Controller {
 	}
 	
 	public static void start(Stage primaryStage) throws Exception {
-        LabyrinthView.drawFrame(primaryStage, 16, 16);
-        LabyrinthView.drawWall(1,1,1,2, Color.RED);
-        LabyrinthView.drawWall(1,1,2,1, Color.RED);
-        LabyrinthView.drawWall(1,2,1,3, Color.RED);
+
+        GlobalView.getInstance().createGlobalView(primaryStage);
         primaryStage.show();
 	}
 		
