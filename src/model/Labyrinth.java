@@ -1,9 +1,15 @@
 package model;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.jgrapht.EdgeFactory;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
@@ -21,7 +27,7 @@ public class Labyrinth {
 	
 	private static Labyrinth instance = new Labyrinth();
 	
-	private SimpleGraph<Vertex, String> labyrinth;
+	private SimpleGraph<Vertex, Edge> labyrinth;
 
 	//Constructeur privé (singleton design pattern)
 	private Labyrinth() {
@@ -158,6 +164,38 @@ public class Labyrinth {
 			
 			System.out.println();			
 		}
+	}
+	
+	public boolean areVerticesConnected(int xs, int ys, int xt, int yt) {
+		return labyrinth.containsEdge(new Vertex(xs, ys), new Vertex(xt, yt));
+	}
+
+	public Set<Vertex> getVertices() {
+		return labyrinth.vertexSet();
+	}
+	
+	public Set<Edge> getPaths() {
+		return labyrinth.edgeSet();
+	}
+	
+	public Set<List<Vertex>> getWalls() {
+		Set<List<Vertex>> walls = new HashSet<List<Vertex>>();
+		
+		for (int y = NORTH_BORDER; y <= SOUTH_BORDER; y++) {
+			for (int x = WEST_BORDER; x <= EAST_BORDER; x++) {
+				Vertex currentCell = new Vertex(x, y);
+				Vertex eastCell = new Vertex(x, y+1);
+				Vertex southCell = new Vertex(x+1, y);
+
+				if (labyrinth.containsVertex(southCell) && !labyrinth.containsEdge(currentCell, southCell))
+					walls.add(Arrays.asList(currentCell, southCell));
+
+				if (labyrinth.containsVertex(eastCell) && !labyrinth.containsEdge(currentCell, eastCell))
+					walls.add(Arrays.asList(currentCell, eastCell));
+			}
+		}
+		
+		return walls;
 	}
 		
 }

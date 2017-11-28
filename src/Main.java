@@ -8,16 +8,13 @@ public class Main extends Application {
 
 	static Controller controller;
 
-	public static void main(String args[]) {
-		Labyrinth labyrinth = Labyrinth.getInstance();
-		labyrinth.printLabyrinth();
-		
+	public static void main(String args[]) {		
 		launch();		
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		controller.makeInstance();
+		Controller.makeInstance();
 		Controller.start(primaryStage);
 	}
 

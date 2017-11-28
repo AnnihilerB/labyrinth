@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.scene.paint.Color;
+import model.Labyrinth;
 import model.Model;
 
 import javafx.event.*;
@@ -11,7 +12,7 @@ import view.GlobalView;
 public class Controller {
 	private static Controller instance = null;
 	private static GlobalView view;
-	private static Model model;
+	private static Labyrinth labyrinth;
 	
 	public static EventHandler eventHandlerButton = new EventHandler<KeyEvent>() {
 		public void handle(KeyEvent event) {
@@ -29,7 +30,7 @@ public class Controller {
 	
 	private Controller() {
 	    view = GlobalView.getInstance();
-		model = Model.getInstance();
+		labyrinth = Labyrinth.getInstance();
 	}
 	
 	public static Controller makeInstance() {
@@ -38,9 +39,8 @@ public class Controller {
 		return instance;
 	}
 	
-	public static void start(Stage primaryStage) throws Exception {
-
-        GlobalView.getInstance().createGlobalView(primaryStage);
+	public static void start(Stage primaryStage) throws Exception {		
+        GlobalView.getInstance().createGlobalView(primaryStage, labyrinth.getWalls());
         primaryStage.show();
 	}
 		
