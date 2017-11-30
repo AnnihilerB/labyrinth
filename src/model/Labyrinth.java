@@ -93,13 +93,13 @@ public class Labyrinth {
 			
 			if (newVertex != null) {
 				labyrinth.addVertex(newVertex);
-				labyrinth.addEdge(vertex, newVertex);						
+				labyrinth.addEdge(vertex, newVertex);
 				buildLabyrinth(newVertex);
 			}
 		}
 	}
-	
-	/*private void calculateManhattanDistance(Vertex source, Vertex target) {
+	/*
+	private void calculateManhattanDistance(Vertex source, Vertex target) {
         Queue<Vertex> fifo = new ArrayDeque<Vertex>();
         target.setNbr(1);
         fifo.add(target);
@@ -107,7 +107,7 @@ public class Labyrinth {
             Vertex actual = fifo.remove();
             for (Directions dir : Directions.values()) {
                 if (this.isOpened(actual, dir)) {
-                    Vertex next = graph.getVertexByDir(actual, dir);
+                    Vertex next = labyrinth.getVertexByDir(actual, dir);
                     if (next.getNbr() == 0) {
                         next.setNbr(actual.getNbr() + 1);
                         if (next != source)
@@ -118,13 +118,41 @@ public class Labyrinth {
         }
     }
 
+
     public void launchManhattan(Vertex source, Vertex target) {
         for (Vertex vertex:
             labyrinth.vertexSet())
             vertex.setNbr(0);
         calculateManhattanDistance(source, target);
-    }*/
-	
+    }
+
+	public boolean isWall(Vertex vertex,Directions dir) {
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return (edge==null);
+	}
+
+	public boolean isClosed(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return (edge==null || (edge.getType()==Edge.Type.CLOSED_DOOR));
+	}
+
+	public boolean isOpened(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return ((edge!=null)&&((edge.getType()!=Edge.Type.CLOSED_DOOR)));
+	}
+
+	public boolean isClosedDoor(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return(edge!=null&&edge.getType()==Edge.Type.CLOSED_DOOR);
+	}
+
+	public boolean isOpenedDoor(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return ((edge!=null)&&((edge.getType()==Edge.Type.OPENED_DOOR)));
+	}
+	*/
+
+
 	public static Labyrinth getInstance() {
 		return instance;
 	}
