@@ -13,12 +13,14 @@ public class LabyrinthView {
     static final int WALL = 2;
     static final int CELL = 9;
     public static final Paint WALL_COLOR = Color.BURLYWOOD;
+    private static LabyrinthView labyrinthView = new LabyrinthView();
 
-    public LabyrinthView(){
-
+    private LabyrinthView() {
     }
 
-
+    public static LabyrinthView getInstance() {
+        return labyrinthView;
+    }
 
     public static void drawFrame(Stage stage,Scene scene, Pane pane, int nbrX, int nbrY) {
         int width = ((WALL + CELL) * nbrX + WALL) * SPAN;
