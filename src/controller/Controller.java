@@ -9,28 +9,16 @@ import javafx.scene.input.*;
 import javafx.stage.Stage;
 import view.GlobalView;
 
-public class Controller {
+public class Controller implements EventHandler<KeyEvent>{
 	private static Controller instance = null;
 	private static GlobalView view;
-	private static Labyrinth labyrinth;
-	
-	public static EventHandler eventHandlerButton = new EventHandler<KeyEvent>() {
-		public void handle(KeyEvent event) {
-				if(event.getCode().equals(KeyCode.UP))
-					System.out.println("test haut");
-				else if(event.getCode()==KeyCode.DOWN)
-					System.out.println("test bas");
-				else if(event.getCode()==KeyCode.LEFT)
-					System.out.println("test gauche");
-				else if(event.getCode()==KeyCode.RIGHT)
-					System.out.println("test droit");
-		}	
-	};
+	private static Model model;
+
 	
 	
 	private Controller() {
 	    view = GlobalView.getInstance();
-		labyrinth = Labyrinth.getInstance();
+		model = Model.getInstance();
 	}
 	
 	public static Controller makeInstance() {
@@ -40,8 +28,29 @@ public class Controller {
 	}
 	
 	public static void start(Stage primaryStage) throws Exception {		
-        GlobalView.getInstance().createGlobalView(primaryStage, labyrinth.getWalls());
+        GlobalView.getInstance().createGlobalView(primaryStage, Labyrinth.getInstance().getWalls());
         primaryStage.show();
 	}
-		
+
+
+	@Override
+	public void handle(KeyEvent event) {
+		switch(event.getCode()){
+
+			case UP:
+				System.out.println("UP");
+				break;
+			case DOWN:
+				System.out.println("DOWN");
+				break;
+			case LEFT:
+				System.out.println("LEFT");
+				break;
+			case RIGHT:
+				System.out.println("RIGHT");
+				break;
+
+		}
+
+	}
 }
