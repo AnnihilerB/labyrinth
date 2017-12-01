@@ -1,6 +1,7 @@
 package model;
 
 
+
 public class Player extends Character {
 	
 	private static Player instance = new Player(0,0);
