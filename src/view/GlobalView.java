@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import controller.Controller;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -20,7 +21,7 @@ public class GlobalView {
 
     private static GlobalView globalView = null;
 
-    static Scene scene;
+
     static Pane pane = new Pane();
 
     private GlobalView() {
@@ -34,7 +35,7 @@ public class GlobalView {
     }
 
     public void createGlobalView(Stage stage, Set<List<Vertex>> walls){
-        LabyrinthView.drawFrame(stage, scene, pane, 16,16);
+        LabyrinthView.drawFrame(stage, pane, 16,16);
 
         walls.forEach((wall) -> {
         	int xs = wall.get(0).getX();
@@ -44,7 +45,6 @@ public class GlobalView {
         	
         	LabyrinthView.drawWall(pane, xs, ys, xt, yt, LabyrinthView.WALL_COLOR);
         });
-        
     }
 }
 
