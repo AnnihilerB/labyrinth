@@ -1,5 +1,6 @@
 package model;
 
+
 public abstract class Element {
 	private int x;
 	private int y;
@@ -9,9 +10,6 @@ public abstract class Element {
 		this.y=_y;
 	}
 	
-	public void afficher(int x, int y) {
-		
-	}
 
 	public int getX() {
 		return x;
@@ -28,5 +26,6 @@ public abstract class Element {
 	public void setY(int y) {
 		this.y = y;
 	}
+
 	
 }

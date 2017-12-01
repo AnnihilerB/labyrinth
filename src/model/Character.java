@@ -1,7 +1,9 @@
 package model;
 
+
 public abstract class Character extends Element {
 	
+
 	
 	public Character(int _x, int _y) {
 		super(_x,_y);
@@ -11,4 +13,6 @@ public abstract class Character extends Element {
 		this.setX(_x);
 		this.setY(_y);
 	}
+
+	
 }

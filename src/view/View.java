@@ -36,10 +36,10 @@ public class View {
 		
         // bouton
         button=new Button("Joueur");
-        player=new Player(50,50,new Image(getClass().getResource("assets/player.png").toExternalForm() ));
+        player=Player.getInstance();
         
         // ajout des éléments
-        pane.getChildren().add(player.getImageView());
+        //pane.getChildren().add(player.getImageView());
         
         // scène
         scene = new Scene(pane,350,300);
