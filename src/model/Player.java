@@ -1,7 +1,5 @@
 package model;
 
-import javafx.event.EventHandler;
-import javafx.scene.image.*;
 
 
 public class Player extends Character {
