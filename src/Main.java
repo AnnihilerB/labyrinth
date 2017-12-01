@@ -10,7 +10,7 @@ public class Main extends Application {
 
 	public static void main(String args[]) {
 		Labyrinth labyrinth = Labyrinth.getInstance();
-		labyrinth.printLabyrinth();
+		//labyrinth.printLabyrinth();
 		
 		launch();		
 	}

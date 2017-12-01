@@ -1,5 +1,6 @@
 package view;
 
+import controller.PlayerListener;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -17,7 +18,7 @@ public class GlobalView {
     static Pane pane = new Pane();
 
     private GlobalView() {
-
+    		scene.setOnKeyPressed(new PlayerListener());
 
     }
 
@@ -28,8 +29,8 @@ public class GlobalView {
     }
 
     public void createGlobalView(Stage stage){
-        LabyrinthView.drawFrame(stage, scene, pane, 16,16);
-        LabyrinthView.drawWall(pane, 1, 1, 1, 2, LabyrinthView.WALL_COLOR);
+        //LabyrinthView.drawFrame(stage, scene, pane, 16,16);
+       // LabyrinthView.drawWall(pane, 1, 1, 1, 2, LabyrinthView.WALL_COLOR);
 
     }
 }
