@@ -1,6 +1,8 @@
 package view;
 
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -8,6 +10,8 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class LabyrinthView {
+
+    static Scene scene = null;
 
     static final int SPAN = 4;
     static final int WALL = 2;
@@ -22,7 +26,12 @@ public class LabyrinthView {
         return labyrinthView;
     }
 
-    public static void drawFrame(Stage stage,Scene scene, Pane pane, int nbrX, int nbrY) {
+    public void setOnAction(EventHandler<KeyEvent> eventHandler){
+        scene.setOnKeyPressed(eventHandler);
+
+    }
+
+    public static void drawFrame(Stage stage, Pane pane, int nbrX, int nbrY) {
         int width = ((WALL + CELL) * nbrX + WALL) * SPAN;
         int height = ((WALL + CELL) * nbrY + WALL) * SPAN;
         scene = new Scene(pane, width, height);
