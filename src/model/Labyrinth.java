@@ -1,9 +1,15 @@
 package model;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Queue;
+import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.jgrapht.EdgeFactory;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
@@ -21,7 +27,7 @@ public class Labyrinth {
 	
 	private static Labyrinth instance = new Labyrinth();
 	
-	private SimpleGraph<Vertex, String> labyrinth;
+	private SimpleGraph<Vertex, Edge> labyrinth;
 
 	//Constructeur privé (singleton design pattern)
 	private Labyrinth() {
@@ -87,12 +93,12 @@ public class Labyrinth {
 			
 			if (newVertex != null) {
 				labyrinth.addVertex(newVertex);
-				labyrinth.addEdge(vertex, newVertex);						
+				labyrinth.addEdge(vertex, newVertex);
 				buildLabyrinth(newVertex);
 			}
 		}
 	}
-	
+	/*
 	private void calculateManhattanDistance(Vertex source, Vertex target) {
         Queue<Vertex> fifo = new ArrayDeque<Vertex>();
         target.setNbr(1);
@@ -101,7 +107,7 @@ public class Labyrinth {
             Vertex actual = fifo.remove();
             for (Directions dir : Directions.values()) {
                 if (this.isOpened(actual, dir)) {
-                    Vertex next = graph.getVertexByDir(actual, dir);
+                    Vertex next = labyrinth.getVertexByDir(actual, dir);
                     if (next.getNbr() == 0) {
                         next.setNbr(actual.getNbr() + 1);
                         if (next != source)
@@ -112,21 +118,44 @@ public class Labyrinth {
         }
     }
 
+
     public void launchManhattan(Vertex source, Vertex target) {
-        for (Vertex vertex :
-                labyrinth.vertexSet())
+        for (Vertex vertex:
+            labyrinth.vertexSet())
             vertex.setNbr(0);
         calculateManhattanDistance(source, target);
     }
-	
+
+	public boolean isWall(Vertex vertex,Directions dir) {
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return (edge==null);
+	}
+
+	public boolean isClosed(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return (edge==null || (edge.getType()==Edge.Type.CLOSED_DOOR));
+	}
+
+	public boolean isOpened(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return ((edge!=null)&&((edge.getType()!=Edge.Type.CLOSED_DOOR)));
+	}
+
+	public boolean isClosedDoor(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return(edge!=null&&edge.getType()==Edge.Type.CLOSED_DOOR);
+	}
+
+	public boolean isOpenedDoor(Vertex vertex,Directions dir){
+		Edge edge=labyrinth.getEdge(vertex,dir);
+		return ((edge!=null)&&((edge.getType()==Edge.Type.OPENED_DOOR)));
+	}
+	*/
+
+
 	public static Labyrinth getInstance() {
 		return instance;
 	}
-
-    public boolean isWall  Vertex vertex, Directions dir) {
-        Edge edge = graph.getEdge(vertex, dir) ;
-        return (edge==null);
-    }
 	
 	@Override
 	public String toString() {
@@ -163,6 +192,38 @@ public class Labyrinth {
 			
 			System.out.println();			
 		}
+	}
+	
+	public boolean areVerticesConnected(int xs, int ys, int xt, int yt) {
+		return labyrinth.containsEdge(new Vertex(xs, ys), new Vertex(xt, yt));
+	}
+
+	public Set<Vertex> getVertices() {
+		return labyrinth.vertexSet();
+	}
+	
+	public Set<Edge> getPaths() {
+		return labyrinth.edgeSet();
+	}
+	
+	public Set<List<Vertex>> getWalls() {
+		Set<List<Vertex>> walls = new HashSet<List<Vertex>>();
+		
+		for (int y = NORTH_BORDER; y <= SOUTH_BORDER; y++) {
+			for (int x = WEST_BORDER; x <= EAST_BORDER; x++) {
+				Vertex currentCell = new Vertex(x, y);
+				Vertex eastCell = new Vertex(x, y+1);
+				Vertex southCell = new Vertex(x+1, y);
+
+				if (labyrinth.containsVertex(southCell) && !labyrinth.containsEdge(currentCell, southCell))
+					walls.add(Arrays.asList(currentCell, southCell));
+
+				if (labyrinth.containsVertex(eastCell) && !labyrinth.containsEdge(currentCell, eastCell))
+					walls.add(Arrays.asList(currentCell, eastCell));
+			}
+		}
+		
+		return walls;
 	}
 		
 }
