@@ -1,5 +1,6 @@
 package view;
 
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -23,6 +24,7 @@ public class GlobalView {
     static Pane pane = new Pane();
 
     private GlobalView() {
+
     }
 
     public static GlobalView getInstance() {
