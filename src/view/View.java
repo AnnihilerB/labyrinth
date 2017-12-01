@@ -1,10 +1,8 @@
 package view;
 
-import java.awt.event.KeyEvent;
 import java.io.File;
 
 import controller.Controller;
-import controller.PlayerListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -48,7 +46,6 @@ public class View {
         primaryStage.setTitle("Jeu vidéo labyrinthe"); 
         primaryStage.setScene(scene); 
         primaryStage.sizeToScene(); 
-        scene.setOnKeyPressed(new PlayerListener());
         primaryStage.show(); 
 	}
 	
