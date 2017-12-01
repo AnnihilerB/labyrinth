@@ -7,10 +7,11 @@ import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
 import view.GlobalView;
+import view.View;
 
 public class Controller {
 	private static Controller instance = null;
-	private static GlobalView view;
+	private static View view;
 	private static Model model;
 	
 	public static EventHandler eventHandlerButton = new EventHandler<KeyEvent>() {
@@ -28,7 +29,7 @@ public class Controller {
 	
 	
 	private Controller() {
-	    view = GlobalView.getInstance();
+	    view = View.getInstance();
 		model = Model.getInstance();
 	}
 	
@@ -39,8 +40,8 @@ public class Controller {
 	}
 	
 	public static void start(Stage primaryStage) throws Exception {
-
-        GlobalView.getInstance().createGlobalView(primaryStage);
+		view.start(primaryStage);
+        
         primaryStage.show();
 	}
 		
