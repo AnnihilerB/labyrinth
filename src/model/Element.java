@@ -8,10 +8,6 @@ public abstract class Element {
 		this.x=_x;
 		this.y=_y;
 	}
-	
-	public void afficher(int x, int y) {
-		
-	}
 
 	public int getX() {
 		return x;

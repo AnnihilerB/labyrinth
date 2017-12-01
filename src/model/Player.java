@@ -3,13 +3,18 @@ package model;
 import javafx.event.EventHandler;
 import javafx.scene.image.*;
 
+
 public class Player extends Character {
 	
+	private static Player instance = new Player(0,0);
 
-	public Player(int _x, int _y, Image image) {
-		super(_x,_y, image);
-		this.getImageView().setX(this.getX());
-		this.getImageView().setY(this.getY());
+
+	public static Player getInstance() {
+		return instance;
+	}
+
+	private Player(int _x, int _y) {
+		super(_x,_y);
 	}
 
 }
