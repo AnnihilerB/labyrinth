@@ -9,7 +9,6 @@ public abstract class Element {
 		this.x=_x;
 		this.y=_y;
 	}
-	
 
 	public int getX() {
 		return x;
