@@ -11,17 +11,19 @@ public abstract class Character extends Element {
 	
 	public boolean collisionMur(int nx, int ny) {
 		if(Labyrinth.getInstance().areVerticesConnected(this.getX(), this.getY(), nx, ny)) {
-			return true;
+			return false;
 		}
 		else
-			return false;
+			return true;
 	}
 	
 	public void seDeplacer(int _x, int _y) {
-		if(!collisionMur(_x, _y)) {
+		if(!collisionMur(_x, _y)){
 			this.setX(_x);
 			this.setY(_y);
 		}
+		else
+			System.out.println("collision détecté");
 	}
 
 	
