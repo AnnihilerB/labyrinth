@@ -6,36 +6,33 @@ import javafx.scene.layout.Pane;
 
 import java.io.File;
 
-public class ElementView {
-    //private final Image PlayerImage = new Image(getClass().getResource("assets/player.png").toExternalForm());
-    private static ElementView elementView = new ElementView();
-    private ImageView playerView;
+public abstract class ElementView {
+	//TODO Centrer les elements
+	protected ImageView sprite = null;
+	
+	protected abstract File getImageFile();
+	
+	protected ElementView() {
+		Image image = new Image(getImageFile().toURI().toString());
+		sprite = new ImageView(image);	
+	}	
 
-    private ElementView() {
-    }
-
-    public static ElementView getInstance() {
-        return elementView;
-    }
-
-    public void drawSprite(Pane pane, int nbrX, int nbrY) {
-        File file = new File("assets/player.png");
-        Image image = new Image(file.toURI().toString());
-    	playerView = new ImageView(image);
-
-    	
-    	pane.getChildren().add(this.playerView);
+    public void drawSprite(Pane pane, int nbrX, int nbrY) {		
+    	pane.getChildren().add(this.sprite);
     	
     	double xt = (LabyrinthView.WALL + nbrX * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
     	double yt = (LabyrinthView.WALL + nbrY * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
     	
-    	playerView.setX(xt);
-    	playerView.setY(yt);
+    	sprite.setX(xt);
+    	sprite.setY(yt);
     }
-    
-    public void updatePlayer(int x, int y) {
-    	playerView.setX(x);
-    	playerView.setY(y); 
+
+    public void updatePosition(int x, int y) {
+    	double xt = (LabyrinthView.WALL + x * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
+    	double yt = (LabyrinthView.WALL + y * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
+    	
+    	sprite.setX(xt);
+    	sprite.setY(yt); 
     }
 }
 

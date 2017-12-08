@@ -1,32 +1,16 @@
 package view;
 
-
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import controller.Controller;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import model.Edge;
-import model.Labyrinth;
-import model.Vertex;
-
 
 public class GlobalView {
 
     private static GlobalView globalView = null;
 
-
     static Pane pane = new Pane();
 
-    private GlobalView() {
-
+    private GlobalView() {	
     }
 
     public static GlobalView getInstance() {
@@ -42,11 +26,21 @@ public class GlobalView {
             LabyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
         }
 
-        ElementView.getInstance().drawSprite(pane, 0, 0);
+        PlayerView player = new PlayerView();
+        player.drawSprite(pane, 0, 0);
+        
+        MonsterView monster = new MonsterView();
+        monster.drawSprite(pane, 12, 5);
+        
+        ButtonView button1 = new ButtonView();
+        button1.drawSprite(pane, 3, 3);
+        ButtonView button2 = new ButtonView();
+        button2.drawSprite(pane, 3, 4);
+        
+        for(int i=0; i<16;i++) {
+	        CandyView candy = new CandyView();
+	        candy.drawSprite(pane, i, 8);
+        }
     }
 
-    }
-
-
-
-
+}
