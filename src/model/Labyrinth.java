@@ -22,10 +22,6 @@ public class Labyrinth {
 		SOUTH,
 		WEST,
 	}
-	private final static int NORTH = 0;
-	private final static int EAST = 1;
-	private final static int SOUTH = 2;
-	private final static int WEST = 3;
 
 	private final static int NORTH_BORDER = 0;
 	private final static int EAST_BORDER = 15;
@@ -72,23 +68,22 @@ public class Labyrinth {
 			Vertex newVertex = null;
 
 			switch (ordre[i]) {
-				case NORTH:
+				case 0:
 					if (!(labyrinth.containsVertex(new Vertex(x, y-1))) && y > NORTH_BORDER)
 						newVertex = new Vertex(x, y-1);
 					break;
 
-				case EAST:
+				case 1:
 					if (!(labyrinth.containsVertex(new Vertex(x+1, y))) && x < EAST_BORDER)
 						newVertex = new Vertex(x+1, y);
 					break;
 
-				case SOUTH:
+				case 2:
 					if (!(labyrinth.containsVertex(new Vertex(x, y+1))) && y < SOUTH_BORDER)
 						newVertex = new Vertex(x, y+1);
 					break;
 
-
-				case WEST:
+				case 3:
 					if (!(labyrinth.containsVertex(new Vertex(x-1, y))) && x > WEST_BORDER)
 						newVertex = new Vertex(x-1, y);
 					break;
