@@ -257,4 +257,34 @@ public class Labyrinth {
 		return walls;
 	}
 
+    public void openDoorRandom(){
+        //On essaie 1000 fois, après quoi on renonce
+        for (int i=1 ; i<=1000 ; ++i){
+            //On choisit un sommet au hasard
+            Vertex vertex = randomVertex();
+            if (vertex!=null){
+                //On choisit une direction au hasard(on devrait prendre seulement
+                //celles qui correspondent à des murs...)
+                Labyrinth.Directions dir= Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)];
+                if (isWall(vertex,dir)){
+                    Vertex vertex2 = getVertexByDir(vertex,dir);
+                    if(vertex2!=null){
+                        Edge edge=labyrinth.getEdge(vertex,vertex2);
+                        if(edge==null){
+                            //On ajoute un saut entre ces sommets
+                            labyrinth.addEdge(vertex,vertex2);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private Vertex randomVertex(){
+        int x = ThreadLocalRandom.current().nextInt(WEST_BORDER, EAST_BORDER+1);
+        int y = ThreadLocalRandom.current().nextInt(NORTH_BORDER,SOUTH_BORDER+1);
+        return new Vertex(x,y);
+    }
+
 }
