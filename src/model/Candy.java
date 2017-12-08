@@ -13,6 +13,15 @@ public class Candy extends Element {
 		super(_x, _y);
 		ajoutPoint=_point;
 	}
+
+	public int getAjoutPoint() {
+		return ajoutPoint;
+	}
+
+	public void setAjoutPoint(int ajoutPoint) {
+		this.ajoutPoint = ajoutPoint;
+	}
+	
 }
 
 // possibilité d'ajouter les cerises (en enfant) pour avoir la capacité de tuer les ennemis pendant un certain temps

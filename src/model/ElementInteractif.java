@@ -12,4 +12,13 @@ public abstract class ElementInteractif extends Element { // classe parent des b
 		super(_x, _y);
 		state=_state;
 	}
+
+	public boolean isState() {
+		return state;
+	}
+
+	public void setState(boolean state) {
+		this.state = state;
+	}
+	
 }

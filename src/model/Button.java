@@ -13,4 +13,12 @@ public class Button extends ElementInteractif {
 		super(_x, _y, _state);
 		linkedDoor=_door;
 	}
+
+	public Door getLinkedDoor() {
+		return linkedDoor;
+	}
+
+	public void setLinkedDoor(Door linkedDoor) {
+		this.linkedDoor = linkedDoor;
+	}
 }
