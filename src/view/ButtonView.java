@@ -2,21 +2,24 @@ package view;
 
 import java.io.File;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 public class ButtonView extends ElementView {
-	String openButton = "assets/button_open.png";
-	String closeButton = "assets/button_close.png";
+	String closeButtonPath;
+	String openButtonPath;
 	
 	@Override
 	protected File getImageFile() {
-		return new File("assets/button_close.png");
+		closeButtonPath = "assets/button_close.png";
+		openButtonPath = "assets/button_open.png";
+		
+		return new File(closeButtonPath);
 	}
 	
 	public void openButton() {
-		Image image = new Image(getImageFile().toURI().toString());
-		sprite = new ImageView(image);		
+		super.updateSprite(new File(openButtonPath));
+	}
+	
+	public void closeButton() {
+		super.updateSprite(new File(closeButtonPath));
 	}
 
 }

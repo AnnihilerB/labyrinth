@@ -33,10 +33,15 @@ public class GlobalView {
         MonsterView monster = new MonsterView();
         monster.drawSprite(pane, 12, 5);
         
+        DoorView door = new DoorView();
+        door.drawSprite(pane, 15, 15);
+        
         ButtonView button1 = new ButtonView();
         button1.drawSprite(pane, 3, 3);
+        button1.openButton();
         ButtonView button2 = new ButtonView();
         button2.drawSprite(pane, 3, 4);
+        button2.closeButton();
         
         for(int i=0; i<16;i++) {
 	        CandyView candy = new CandyView();
