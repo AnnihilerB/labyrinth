@@ -8,7 +8,7 @@ import java.io.File;
 
 public abstract class ElementView {
 	//TODO Centrer les elements
-	protected ImageView sprite = null;
+	private ImageView sprite = null;
 	
 	protected abstract File getImageFile();
 	
@@ -33,6 +33,10 @@ public abstract class ElementView {
     	
     	sprite.setX(xt);
     	sprite.setY(yt); 
+    }
+    
+    protected void updateSprite(File newSpritePath) {
+    	sprite.setImage(new Image(newSpritePath.toURI().toString()));
     }
 }
 
