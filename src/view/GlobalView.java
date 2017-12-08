@@ -1,10 +1,12 @@
 package view;
 
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import controller.Controller;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -20,7 +22,7 @@ public class GlobalView {
 
     private static GlobalView globalView = null;
 
-    static Scene scene;
+
     static Pane pane = new Pane();
 
     private GlobalView() {
@@ -33,20 +35,15 @@ public class GlobalView {
         return globalView;
     }
 
-    public void createGlobalView(Stage stage, Set<List<Vertex>> walls){
-        LabyrinthView.drawFrame(stage, scene, pane, 16,16);
+    public void createGlobalView(Stage stage, ArrayList<Integer> wallCoordinates){
+        LabyrinthView.drawFrame(stage, pane, 16,16);
 
-        walls.forEach((wall) -> {
-        	int xs = wall.get(0).getX();
-        	int ys = wall.get(0).getY();
-        	int xt = wall.get(1).getX();
-        	int yt = wall.get(1).getY();
-        	
-        	LabyrinthView.drawWall(pane, xs, ys, xt, yt, LabyrinthView.WALL_COLOR);
-        });
-        
+        for (int i = 0; i < wallCoordinates.size(); i+=4){
+            LabyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
+        }
+
+        ElementView.getInstance().drawSprite(pane, 0, 0);
     }
-}
 
-
+    }
 
