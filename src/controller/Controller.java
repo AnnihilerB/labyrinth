@@ -2,7 +2,7 @@ package controller;
 
 import model.Labyrinth;
 import model.Model;
-
+import model.Player;
 import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
@@ -13,7 +13,7 @@ import view.LabyrinthView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
+import view.ElementView;
 
 public class Controller {
 	private static Controller instance = null;
@@ -24,16 +24,21 @@ public class Controller {
         switch (event.getCode()) {
 
             case UP:
+            	// Déplacement du personnage
+            	Player.getInstance().seDeplacer(Player.getInstance().getX(),Player.getInstance().getY()-1);
                 System.out.println("UP");
                 break;
             case DOWN:
-                System.out.println("DOWN");
+            	Player.getInstance().seDeplacer(Player.getInstance().getX(),Player.getInstance().getY()+1);
+            	System.out.println("DOWN");
                 break;
             case LEFT:
-                System.out.println("LEFT");
+            	Player.getInstance().seDeplacer(Player.getInstance().getX()-1,Player.getInstance().getY());
+            	System.out.println("LEFT");
                 break;
             case RIGHT:
-                System.out.println("RIGHT");
+            	Player.getInstance().seDeplacer(Player.getInstance().getX()+1,Player.getInstance().getY());
+            	System.out.println("RIGHT");
                 break;
 
         }

@@ -1,5 +1,6 @@
 package model;
 
+
 public abstract class Element {
 	private int x;
 	private int y;
@@ -24,5 +25,6 @@ public abstract class Element {
 	public void setY(int y) {
 		this.y = y;
 	}
+
 	
 }

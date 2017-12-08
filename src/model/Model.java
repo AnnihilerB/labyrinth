@@ -4,8 +4,7 @@ import model.Model;
 
 public class Model {
 	private static Model instance=new Model();
-	Labyrinth labyrinth;
-	Score score;
+	private String data;
 	
 	private Model() {
 		

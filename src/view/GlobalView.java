@@ -42,5 +42,5 @@ public class GlobalView {
 	        candy.drawSprite(pane, i, 8);
         }
     }
-
+    
 }
