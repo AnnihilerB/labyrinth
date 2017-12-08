@@ -8,31 +8,64 @@ import java.io.File;
 
 public abstract class ElementView {
 	//TODO Centrer les elements
-	private ImageView sprite = null;
+	private ImageView sprite;
+	private double width, height;
 	
 	protected abstract File getImageFile();
 	
 	protected ElementView() {
 		Image image = new Image(getImageFile().toURI().toString());
-		sprite = new ImageView(image);	
+		sprite = new ImageView(image);		
+		
+		width = image.getWidth();
+		height = image.getHeight();
 	}	
 
-    public void drawSprite(Pane pane, int nbrX, int nbrY) {		
+    public void drawSprite(Pane pane, int x, int y) {		
     	pane.getChildren().add(this.sprite);
     	
-    	double xt = (LabyrinthView.WALL + nbrX * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
-    	double yt = (LabyrinthView.WALL + nbrY * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
-    	
-    	sprite.setX(xt);
-    	sprite.setY(yt);
+    	updatePosition(x, y);
     }
 
     public void updatePosition(int x, int y) {
-    	double xt = (LabyrinthView.WALL + x * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
-    	double yt = (LabyrinthView.WALL + y * (LabyrinthView.WALL + LabyrinthView.CELL)) * LabyrinthView.SPAN;
+    	sprite.setX(getDisplayPositionFromXCoord(x));
+    	sprite.setY(getDisplayPositionFromYCoord(y));
+    }
+    
+    private double getDisplayPositionFromXCoord(int x) {
+    	double displayPosition;
     	
-    	sprite.setX(xt);
-    	sprite.setY(yt); 
+    	// On décale la position au delà du mur à l'extrémité ouest
+    	displayPosition = LabyrinthView.WALL;
+    	
+    	// On décale la position du nombre de cellules par rapport à l'extrémité ouest
+    	displayPosition += x * (LabyrinthView.WALL + LabyrinthView.CELL);
+    	
+    	// On multiplie ce déplacement par le scaling d'affichage
+    	displayPosition *= LabyrinthView.SPAN;
+    	
+    	// On centre l'affichage dans sa cellule courante
+    	displayPosition += (LabyrinthView.SPAN * LabyrinthView.CELL - width)/2;
+    	
+    	return displayPosition;
+    }
+    
+    private double getDisplayPositionFromYCoord(int y) {
+    	double displayPosition;
+    	
+    	// On décale la position au delà du mur à l'extrémité nord
+    	displayPosition = LabyrinthView.WALL;
+    	
+    	// On décale la position du nombre de cellules par rapport à l'extrémité nord
+    	displayPosition += y * (LabyrinthView.WALL + LabyrinthView.CELL);
+    	
+    	// On multiplie ce déplacement par le scaling d'affichage
+    	displayPosition *= LabyrinthView.SPAN;
+    	
+    	// On centre l'affichage dans sa cellule courante
+    	displayPosition += (LabyrinthView.SPAN * LabyrinthView.CELL - height)/2;
+    	
+    	return displayPosition;
     }
     
     protected void updateSprite(File newSpritePath) {
