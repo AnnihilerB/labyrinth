@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 public class GlobalView {
 
     private static GlobalView globalView = null;
+    private PlayerView playerView = null;
 
     static Pane pane = new Pane();
 
@@ -26,8 +27,8 @@ public class GlobalView {
             LabyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
         }
 
-        PlayerView player = new PlayerView();
-        player.drawSprite(pane, 0, 0);
+        playerView = PlayerView.getInstance();
+        playerView.drawSprite(pane, (int)playerView.sprite.getX(), (int)playerView.sprite.getY());
         
         MonsterView monster = new MonsterView();
         monster.drawSprite(pane, 12, 5);

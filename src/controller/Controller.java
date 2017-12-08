@@ -14,11 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import view.ElementView;
+import view.PlayerView;
 
+/**
+ * Controller class.
+ * This class handles communication between model and view.
+ * It contains one single instance of view and model.
+ */
 public class Controller {
+
+	/**
+	 * Instance of controller
+	 */
 	private static Controller instance = null;
-	private static GlobalView view;
-	private static Model model;
+
+	private static PlayerView playerView;
 
 	private static EventHandler<KeyEvent> keyboardListener = event -> {
         switch (event.getCode()) {
@@ -26,27 +36,26 @@ public class Controller {
             case UP:
             	// Déplacement du personnage
             	Player.getInstance().seDeplacer(Player.getInstance().getX(),Player.getInstance().getY()-1);
-                System.out.println("UP");
+                playerView.updatePosition(Player.getInstance().getX(),Player.getInstance().getY());
                 break;
             case DOWN:
             	Player.getInstance().seDeplacer(Player.getInstance().getX(),Player.getInstance().getY()+1);
-            	System.out.println("DOWN");
+				playerView.updatePosition(Player.getInstance().getX(), Player.getInstance().getY());
                 break;
             case LEFT:
             	Player.getInstance().seDeplacer(Player.getInstance().getX()-1,Player.getInstance().getY());
-            	System.out.println("LEFT");
+				playerView.updatePosition(Player.getInstance().getX(), Player.getInstance().getY());
                 break;
             case RIGHT:
             	Player.getInstance().seDeplacer(Player.getInstance().getX()+1,Player.getInstance().getY());
-            	System.out.println("RIGHT");
+				playerView.updatePosition(Player.getInstance().getX(), Player.getInstance().getY());
                 break;
 
         }
     };
 
 		private Controller() {
-			view = GlobalView.getInstance();
-			model = Model.getInstance();
+		    playerView = PlayerView.getInstance();
 		}
 
 		public static Controller makeInstance() {
@@ -55,9 +64,9 @@ public class Controller {
 			return instance;
 		}
 
-		public static void start(Stage primaryStage) throws Exception {
-			ArrayList wallCoordiantes = generateWalls(Labyrinth.getInstance().getWalls());
-			GlobalView.getInstance().createGlobalView(primaryStage, wallCoordiantes);
+		public static void start(Stage primaryStage){
+			ArrayList wallCoordinates = generateWalls(Labyrinth.getInstance().getWalls());
+			GlobalView.getInstance().createGlobalView(primaryStage, wallCoordinates);
 			LabyrinthView.getInstance().setOnAction(keyboardListener);
 			primaryStage.show();
 		}
