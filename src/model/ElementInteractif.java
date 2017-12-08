@@ -1,14 +1,14 @@
 package model;
 
 public class ElementInteractif extends Element { // classe parent des boutons et des portes car variable etat en commun
-	private boolean state; // etat de l'élément. On=true, Off=false. Ouvrir/fermer la porte en conséquence
+	private boolean state; // etat de l'élément. On=true,ouverte ; Off=false,fermée
 	
-	public ElementInteractif(int _x, int _y) {
+	public ElementInteractif(int _x, int _y) { // constructeur par défaut pour avoir la porte fermée ou le bouton éteint par défaut
 		super(_x,_y);
 		state=false;
 	}
 	
-	public ElementInteractif(int _x, int _y, boolean _state) {
+	public ElementInteractif(int _x, int _y, boolean _state) { // constructeur pour choisir l'état initial
 		super(_x, _y);
 		state=_state;
 	}

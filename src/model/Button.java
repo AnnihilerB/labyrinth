@@ -1,15 +1,16 @@
 package model;
 
-public class Button extends Element {
-	private boolean etat; // etat du bouton. On=true, Off=false. Ouvrir/fermer la porte en conséquence
+public class Button extends ElementInteractif {
 	
-	public Button(int _x, int _y) {
+	private Door linkedDoor; // porte liée au bouton à ouvrir et fermer en conséquence
+	
+	public Button(int _x, int _y, Door _door) {
 		super(_x,_y);
-		etat=false;
+		linkedDoor=_door;
 	}
 	
-	public Button(int _x, int _y, boolean _etat) {
-		super(_x, _y);
-		etat=_etat;
+	public Button(int _x, int _y, Door _door, boolean _state) {
+		super(_x, _y, _state);
+		linkedDoor=_door;
 	}
 }
