@@ -16,7 +16,7 @@ import org.jgrapht.graph.SimpleGraph;
 
 public class Labyrinth {
 
-	private enum Directions {
+	public enum Directions {
 		NORTH,
 		EAST,
 		SOUTH,
@@ -34,7 +34,7 @@ public class Labyrinth {
 
 	//Constructeur privé (singleton design pattern)
 	private Labyrinth() {
-		labyrinth = new SimpleGraph(DefaultEdge.class);
+		labyrinth = new SimpleGraph(Edge.class);
 
 		Vertex startingCell = new Vertex();
 		labyrinth.addVertex(startingCell);
@@ -99,6 +99,16 @@ public class Labyrinth {
 				buildLabyrinth(newVertex);
 			}
 		}
+	}
+
+
+	public model.Vertex getVertex(int x, int y) {
+		Set<Vertex> setVertex = labyrinth.vertexSet();
+		for (Vertex vertex : setVertex) {
+			if (vertex.getX() == x && vertex.getY() == y)
+				return vertex;
+		}
+		return null;
 	}
 
 	private void calculateManhattanDistance(Vertex source, Vertex target) {
@@ -281,5 +291,23 @@ public class Labyrinth {
         int y = ThreadLocalRandom.current().nextInt(NORTH_BORDER,SOUTH_BORDER+1);
         return new Vertex(x,y);
     }
+
+	public static void main(String args[]) {
+		Labyrinth labtest = new Labyrinth();
+		Vertex vertexsrc = labtest.getVertex(0,0);
+		Vertex vertexdst = labtest.getVertex(0,1);
+		System.out.println(labtest.isOpened(vertexdst,Directions.EAST));
+		System.out.println(labtest.isOpened(vertexdst,Directions.WEST));
+		System.out.println(labtest.isOpened(vertexdst,Directions.NORTH));
+		System.out.println(labtest.isOpened(vertexdst,Directions.SOUTH));
+
+
+
+		System.out.println(labtest.isWall(vertexdst,Directions.EAST));
+		System.out.println(labtest.isClosed(vertexdst,Directions.EAST));
+		labtest.printLabyrinth();
+
+		labtest.launchManhattan(vertexsrc,vertexdst);
+	}
 
 }
