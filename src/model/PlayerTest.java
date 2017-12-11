@@ -23,6 +23,6 @@ public class PlayerTest extends TestCase {
         assertEquals(false,labyrinth.areVerticesConnected(player.getX(), player.getY(), player.getX()-1, player.getY()));
         assertEquals(false,labyrinth.areVerticesConnected(player.getX(), player.getY(), player.getX(), player.getY()+1));
         assertEquals(false,labyrinth.areVerticesConnected(player.getX(), player.getY(), player.getX(), player.getY()-1));*/
-    }
+    } 
 	
 }
