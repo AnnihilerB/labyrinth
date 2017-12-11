@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 public class GlobalView {
 
     private static GlobalView globalView = null;
-
+    PlayerView player;
     static Pane pane = new Pane();
 
     private GlobalView() {	
@@ -26,7 +26,8 @@ public class GlobalView {
             LabyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
         }
 
-        PlayerView player = new PlayerView();
+        
+        player = new PlayerView();
         player.drawSprite(pane, 0, 0);
         
         MonsterView monster = new MonsterView();
@@ -46,6 +47,13 @@ public class GlobalView {
 	        CandyView candy = new CandyView();
 	        candy.drawSprite(pane, i, 8);
         }
+        
+        ScoreView.getInstance().createScoreView(pane);
+        ScoreView.getInstance().updateScore(58);
+    }
+    
+    public void testUpdate() {
+        player.updatePosition(5, 7);    	
     }
     
 }

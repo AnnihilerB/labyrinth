@@ -13,6 +13,9 @@ public class LabyrinthView {
 
     static Scene scene = null;
 
+    private static int width;
+    private static int height;
+    
     static final int SPAN = 4;
     static final int WALL = 2;
     static final int CELL = 9;
@@ -32,8 +35,9 @@ public class LabyrinthView {
     }
 
     public static void drawFrame(Stage stage, Pane pane, int nbrX, int nbrY) {
-        int width = ((WALL + CELL) * nbrX + WALL) * SPAN;
-        int height = ((WALL + CELL) * nbrY + WALL) * SPAN;
+        width = ((WALL + CELL) * nbrX + WALL) * SPAN;
+        height = ((WALL + CELL) * nbrY + WALL) * SPAN;
+        System.out.println("" +width);
         scene = new Scene(pane, width, height);
 
         Rectangle square;
@@ -96,5 +100,13 @@ public class LabyrinthView {
             square.setFill(color);
             pane.getChildren().add(square);
         }
+    }
+    
+    public static int getWidth() {
+    	return width;
+    }
+    
+    public static int getHeight() {
+    	return height;
     }
 }
