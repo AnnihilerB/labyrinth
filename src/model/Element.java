@@ -15,7 +15,7 @@ public abstract class Element {
 	 */
 	private int y;
 	/**
-	 * 
+	 * Sets the position of the element on the x and y chosen.
 	 * @param _x the x coordinate we want for the element.
 	 * @param _y the y coordinate we want for the element.
 	 */
