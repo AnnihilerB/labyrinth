@@ -11,7 +11,7 @@ public class Button extends ElementInteractif {
 	private Door linkedDoor; // porte liée au bouton à ouvrir et fermer en conséquence
 	/**
 	 * 
-	 * @param _x
+	 * @param _x 
 	 * @param _y
 	 */
 	public Button(int _x, int _y) {

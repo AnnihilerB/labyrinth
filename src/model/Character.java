@@ -1,4 +1,4 @@
-package model;
+package model; 
 
 /**
  * The abstract class Character is a superclass of all classes that can move on the labyrinth.

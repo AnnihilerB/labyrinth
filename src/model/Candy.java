@@ -1,4 +1,4 @@
-package model;
+package model; 
 /**
  * The Candy is an element which appears in the labyrinth and can be taken to increase the score.
  * @author mduverneix

@@ -1,4 +1,4 @@
-package model;
+package model; 
 /**
  * The Door is an element which appears in the labyrinth and allows to create a new labyrinth to continue to play after you passed the door.
  * @author mduverneix

@@ -40,7 +40,7 @@ public class Controller {
             	Player.getInstance().moves(Player.getInstance().getX()+1,Player.getInstance().getY());
             	System.out.println("RIGHT");
                 break;
-
+ 
         }
     };
 
