@@ -25,19 +25,19 @@ public class Controller {
 
             case UP:
             	// Déplacement du personnage
-            	Player.getInstance().seDeplacer(Player.getInstance().getX(),Player.getInstance().getY()-1);
+            	Player.getInstance().moves(Player.getInstance().getX(),Player.getInstance().getY()-1); //écrit s'il y a une collision ou déplace le joueur (sans visualisation sur l'écran de jeu)
                 System.out.println("UP");
                 break;
             case DOWN:
-            	Player.getInstance().seDeplacer(Player.getInstance().getX(),Player.getInstance().getY()+1);
+            	Player.getInstance().moves(Player.getInstance().getX(),Player.getInstance().getY()+1);
             	System.out.println("DOWN");
                 break;
             case LEFT:
-            	Player.getInstance().seDeplacer(Player.getInstance().getX()-1,Player.getInstance().getY());
+            	Player.getInstance().moves(Player.getInstance().getX()-1,Player.getInstance().getY());
             	System.out.println("LEFT");
                 break;
             case RIGHT:
-            	Player.getInstance().seDeplacer(Player.getInstance().getX()+1,Player.getInstance().getY());
+            	Player.getInstance().moves(Player.getInstance().getX()+1,Player.getInstance().getY());
             	System.out.println("RIGHT");
                 break;
 
