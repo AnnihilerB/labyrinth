@@ -296,22 +296,4 @@ public class Labyrinth {
         return new Vertex(x,y);
     }
 
-	public static void main(String args[]) {
-		Labyrinth labtest = new Labyrinth();
-		Vertex vertexsrc = labtest.getVertex(0,0);
-		Vertex vertexdst = labtest.getVertex(0,1);
-		System.out.println(labtest.isOpened(vertexdst,Directions.EAST));
-		System.out.println(labtest.isOpened(vertexdst,Directions.WEST));
-		System.out.println(labtest.isOpened(vertexdst,Directions.NORTH));
-		System.out.println(labtest.isOpened(vertexdst,Directions.SOUTH));
-
-
-
-		System.out.println(labtest.isWall(vertexdst,Directions.EAST));
-		System.out.println(labtest.isClosed(vertexdst,Directions.EAST));
-		labtest.printLabyrinth();
-
-		labtest.launchManhattan(vertexsrc,vertexdst);
-	}
-
 }
