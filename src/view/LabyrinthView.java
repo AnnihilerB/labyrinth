@@ -37,7 +37,6 @@ public class LabyrinthView {
     public static void drawFrame(Stage stage, Pane pane, int nbrX, int nbrY) {
         width = ((WALL + CELL) * nbrX + WALL) * SPAN;
         height = ((WALL + CELL) * nbrY + WALL) * SPAN;
-        System.out.println("" +width);
         scene = new Scene(pane, width, height);
 
         Rectangle square;

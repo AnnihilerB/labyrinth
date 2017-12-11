@@ -23,7 +23,7 @@ public class ScoreView {
     public void createScoreView(Pane pane) {
 	    updateScore(0);
 
-	    score.relocate(680, 0);
+	    score.relocate(LabyrinthView.getWidth()-30, 0);
         pane.getChildren().add(score);
     }
     
