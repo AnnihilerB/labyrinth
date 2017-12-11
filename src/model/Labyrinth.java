@@ -292,7 +292,7 @@ public class Labyrinth {
         return new Vertex(x,y);
     }
 
-	public static void main(String args[]) {
+/*	public static void main(String args[]) {
 		Labyrinth labtest = new Labyrinth();
 		Vertex vertexsrc = labtest.getVertex(0,0);
 		Vertex vertexdst = labtest.getVertex(0,1);
@@ -308,6 +308,6 @@ public class Labyrinth {
 		labtest.printLabyrinth();
 
 		labtest.launchManhattan(vertexsrc,vertexdst);
-	}
+	}*/
 
 }
