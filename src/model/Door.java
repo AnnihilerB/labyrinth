@@ -4,9 +4,10 @@ public class Door extends ElementInteractif{
 	
 	private Button linkedButton; // bouton lié à la porte
 	
-	public Door(int _x, int _y, Button _button) {
+	public Door(int _x, int _y) {
 		super(_x,_y);
-		linkedButton=_button;
+		linkedButton=null;
+		this.setState(true);
 	}
 	
 	public Door(int _x, int _y, Button _button, boolean _state) {
