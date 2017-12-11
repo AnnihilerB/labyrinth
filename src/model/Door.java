@@ -1,10 +1,10 @@
 package model; 
 /**
- * The Door is an element which appears in the labyrinth and allows to create a new labyrinth to continue to play after you passed the door.
+ * The Door is an element which appears in the labyrinth and allows to create a new labyrinth to continue to play after you passed it.
  * @author mduverneix
  *
  */
-public class Door extends ElementInteractif{
+public class Door extends InteractiveElement{
 	/**
 	 * the button linked to the door which will close or open it.
 	 */
