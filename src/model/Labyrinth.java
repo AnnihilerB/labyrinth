@@ -16,7 +16,7 @@ import org.jgrapht.graph.SimpleGraph;
 
 public class Labyrinth {
 
-	public enum Directions {
+	enum Directions {
 		NORTH,
 		EAST,
 		SOUTH,
@@ -136,9 +136,9 @@ public class Labyrinth {
 
 
 	public void launchManhattan(Vertex source, Vertex target) {
-		for (Vertex vertex:
-				labyrinth.vertexSet())
+		for (Vertex vertex : labyrinth.vertexSet())
 			vertex.setNbr(0);
+		
 		calculateManhattanDistance(source, target);
 	}
 
@@ -296,4 +296,12 @@ public class Labyrinth {
         return new Vertex(x,y);
     }
 
+    public void setLabyrinthGraph(SimpleGraph<Vertex, Edge> graph) {
+    	this.labyrinth = graph;
+    }
+    
+    public SimpleGraph<?, ?> getLabyrinthGraph() {
+    	return this.labyrinth;
+    }
+    
 }
