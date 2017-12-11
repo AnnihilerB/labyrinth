@@ -48,4 +48,8 @@ public class LabyrinthTest extends TestCase {
         assertTrue(lab.isWall(v1, EAST));
     }
 
+    public void testAreVerticesConnected() {
+        Labyrinth lab = Labyrinth.getInstance();
+        lab.areVerticesConnected(1,0,1,1);
+    }
 }
