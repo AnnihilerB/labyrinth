@@ -7,10 +7,8 @@ import javafx.stage.Stage;
 import view.GlobalView;
 import view.LabyrinthView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 import view.ElementView;
 
 public class Controller {
@@ -106,17 +104,23 @@ public class Controller {
         int coordPlayerY = game.getPlayer().getY();
         System.out.println(elementHashMap.toString());
 
-        elementHashMap.forEach((key, e) -> {
-            if (coordPlayerX == e.getX() && coordPlayerY == e.getY()){
-                System.out.println("Collision");
-                elementHashMap.remove(key);
-                if (e instanceof Candy){
-                    globalView.removeCandyFromView(key);
+        Iterator<Map.Entry<Integer,Element>> iter = elementHashMap.entrySet().iterator();
+
+        while (iter.hasNext()) {
+
+            Map.Entry<Integer,Element> entry = iter.next();
+
+            Element element = entry.getValue();
+            if(coordPlayerX == element.getX() && coordPlayerY == element.getY()){
+                iter.remove();
+                if (element instanceof Candy){
+                    globalView.removeCandyFromView(entry.getKey());
                 }
-                if (e instanceof Enemy) {
+                if (element instanceof Enemy) {
                     game.resetGame();
                     globalView.resetView();
                     try {
+                        stage.setScene(null);
                         start(this.stage);
                     } catch (Exception e1) {
                         e1.printStackTrace();
@@ -124,7 +128,7 @@ public class Controller {
                 }
 
             }
-        });
+        }
         return 0;
     }
 
