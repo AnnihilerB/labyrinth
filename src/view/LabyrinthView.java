@@ -9,6 +9,18 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+
+/** 
+ * This class is used to draw the walls composing the labyrinth as 
+ * well as the frame surrounding it.
+ * 
+ * There is only a single labyrinth to be displayed so this class follows a
+ * singleton design pattern.
+ *
+ *
+ * @author		Teiki Pepin, Ali Cherifi
+ */	
+
 public class LabyrinthView {
 
     static Scene scene = null;
