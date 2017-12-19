@@ -311,7 +311,6 @@ public class Labyrinth {
     /**
      * Prints a graphical representation of the labyrinth to the console.
      *
-     * @return a string representation of the graph : its vertices and its edges
      */
 	public void printLabyrinth() {
 		for (int i=NORTH_BORDER; i<=SOUTH_BORDER; i++) {
@@ -407,13 +406,13 @@ public class Labyrinth {
      * Opens a random door in order to change the difficulty of the game.
      */
     public void openDoorRandom(){
-        //On essaie 1000 fois, après quoi on renonce
+        //On essaie 1000 fois, apres quoi on renonce
         for (int i=1 ; i<=1000 ; ++i){
             //On choisit un sommet au hasard
             Vertex vertex = randomVertex();
             if (vertex!=null){
                 //On choisit une direction au hasard(on devrait prendre seulement
-                //celles qui correspondent à des murs...)
+                //celles qui correspondent a des murs...)
                 Labyrinth.Directions dir= Directions.values()[ThreadLocalRandom.current().nextInt(Directions.values().length)];
                 if (isWall(vertex,dir)){
                     Vertex vertex2 = getVertexByDir(vertex,dir);

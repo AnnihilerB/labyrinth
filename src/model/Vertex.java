@@ -2,6 +2,9 @@ package model;
 
 import java.util.Objects;
 
+/**
+ * Class representing a vertex in a graph.
+ */
 public class Vertex implements Comparable<Vertex> {
 	/**
 	 * the x coordinate for the vertex.
@@ -11,6 +14,9 @@ public class Vertex implements Comparable<Vertex> {
 	 * the y coordinate for the vertex.
 	 */
 	private int y;
+	/**
+	 * Number used to mak vertices through the manhattan algorithm
+	 */
 	private int nbr;
 	
 	/**
@@ -42,7 +48,7 @@ public class Vertex implements Comparable<Vertex> {
 		return "(" + x + "," + y +")";
 	}
 	
-	//Méthode utilisé par SimpleGraph.containsVertex()
+	//Methode utilise par SimpleGraph.containsVertex()
 	/**
 	 * Compares an object if it is a Vertex with this one.
 	 * If they both have the same position on x and y coordinate, it returns true.
@@ -58,15 +64,24 @@ public class Vertex implements Comparable<Vertex> {
 		return false;		
 	}
 
-	//Méthode utilisé par SimpleGraph.containsVertex()
+	/**
+	 * Method returning the reference for an object.
+	 * @return the reference of an object.
+	 */
 	@Override
 	public int hashCode() {
+		//used by SimpleGraph.containsVertex()
 		return Objects.hash(x, y);
 	}
 
-	//Méthode utilisé par Edge.compareTo()
+	/**
+	 * Compares a vertex to another.
+	 * @param o the vertex Object to be compared to.
+	 * @return the distance between the two vertices.
+	 */
 	@Override
-	public int compareTo(Vertex o) {		
+	public int compareTo(Vertex o) {
+		//used by Edge.compareTo()
 		return java.lang.Math.abs(this.x-o.getX()) + java.lang.Math.abs(this.y-o.getY());
 	}
 	/**
@@ -98,11 +113,19 @@ public class Vertex implements Comparable<Vertex> {
 		this.y = y;
 	}
 
+	/**
+	 * return the mark number of a vertex
+	 * @return the mark number
+	 */
     public int getNbr() {
         return nbr;
     }
 
-    public void setNbr(int nbr) {
+	/**
+	 * Set the mark number of a vertex trough the manhattan algorithm
+	 * @param nbr the mark number to set to.
+	 */
+	public void setNbr(int nbr) {
         this.nbr = nbr;
     }
 }

@@ -48,7 +48,6 @@ public class Controller {
         switch (event.getCode()) {
 
             case UP:
-                // Déplacement du personnage
                 game.getPlayer().moves(game.getPlayer().getX(), game.getPlayer().getY() - 1);
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(), game.getPlayer().getY());
                 areColliding(game.getCandies());
