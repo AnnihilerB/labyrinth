@@ -2,7 +2,7 @@ package model;
 
 /**
  * The abstract class Element is a superclass of all classes that appears in the labyrinth.
- * @author mduverneix
+ * @author Martial Duverneix
  *
  */
 public abstract class Element {

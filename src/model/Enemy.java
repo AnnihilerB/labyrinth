@@ -1,7 +1,7 @@
 package model;
 /**
  * The Enemy is an element which appears in the labyrinth and tries to kill the player.
- * @author mduverneix
+ * @author Martial Duverneix
  *
  */
 public class Enemy extends Character {

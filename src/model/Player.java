@@ -3,7 +3,7 @@ package model;
 
 /**
  * The player is a character that moves around in the labyrinth.
- * @author mduverneix
+ * @author Martial Duverneix
  *
  */
 public class Player extends Character {
