@@ -67,8 +67,8 @@ public abstract class ElementView {
 	/** 
 	 * Moves the sprite of this element to the given coordinates.
 	 *
-	 * @param	x		the x coordinate in the graph at which to move this element
-	 * @param	y		the y coordinate in the graph at which to move this element
+	 * @param	x		the x coordinate in the graph at which to move this sprite
+	 * @param	y		the y coordinate in the graph at which to move this sprite
 	 */
 	
     public void updatePosition(int x, int y) {
