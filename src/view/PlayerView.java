@@ -4,10 +4,10 @@ import java.io.File;
 
 /** 
  * Sub-specification for ElementView meant to represent the player.
- * Uses all functions made by the its parent class but uses
- * an image of a door as a graphical representation. <p>
+ * Uses all functions made by its parent class but uses
+ * an image of the player as a graphical representation. <p>
  * 
- * There is only a single player so this is class applies a
+ * There is only a single player so this class applies a
  * singleton design pattern.
  *
  * @author 			Teiki Pepin

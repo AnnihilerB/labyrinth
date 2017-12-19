@@ -5,7 +5,7 @@ import java.io.File;
 /** 
  * Sub-specification for ElementView meant to represent a button. 
  * Its graphical representation can be either an open button or a 
- * closed button. Uses all functions made by the its parent class 
+ * closed button. Uses all functions made by its parent class 
  * but provides an image of a button, either open or closed.
  * Also provides methods to switch between the open and closed states.
  *
@@ -43,7 +43,7 @@ public class ButtonView extends ElementView {
 
 
 	/** 
-	 * Update the sprite of this object to one of an open button. It uses 
+	 * Updates the sprite of this object to one of an open button. It uses 
 	 * the field openButtonPath defined elsewhere to generate the File 
 	 * that is provided to its parent's updating method. <p>
 	 * 
@@ -59,7 +59,7 @@ public class ButtonView extends ElementView {
 
 
 	/** 
-	 * Update the sprite of this object to one of a closed button. It uses 
+	 * Updates the sprite of this object to one of a closed button. It uses 
 	 * the field closeButtonPath defined elsewhere to generate the File 
 	 * that is provided to its parent's updating method. <p>
 	 * 
