@@ -17,7 +17,8 @@ public class CandyView extends ElementView {
 	/** 
 	 * Returns a File object that points to an image file representing
 	 * a candy. The File is meant to be used elsewhere in order
-	 * to generate a proper sprite that can be printed on the screen.
+	 * to generate a proper sprite that can be printed on the screen. <p>
+	 * 
 	 * The file is selected among four possible choices in a random manner.
 	 * If the selected file doesn't exist, an empty File will be returned.
 	 *

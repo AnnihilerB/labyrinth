@@ -16,7 +16,8 @@ public class DoorView extends ElementView {
 	/** 
 	 * Returns a File object that points to an image file representing
 	 * an open door. The File is meant to be used elsewhere in order
-	 * to generate a proper sprite that can be printed on the screen.
+	 * to generate a proper sprite that can be printed on the screen. <p>
+	 * 
 	 * If the file doesn't exist, an empty File will be returned.
 	 *
 	 * @return 			a File object that contains an image of an open door
