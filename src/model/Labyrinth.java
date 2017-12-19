@@ -261,9 +261,12 @@ public class Labyrinth {
 		return instance;
 	}
 
+    /**
+     * Write a String version of the content of the labyrinth.
+     * @return a string.
+     */
 	@Override
-	/** Write a String version of the content of the labyrinth.
-	 */
+
 	public String toString() {
 		return labyrinth.toString();
 	}
@@ -328,7 +331,7 @@ public class Labyrinth {
 	}
 
 	/** Return all the walls contained in the labyrinth.
-	 * @return a vertex set.
+	 * @return a vertex list set.
 	 */
 	public Set<List<Vertex>> getWalls() {
 		Set<List<Vertex>> walls = new HashSet<List<Vertex>>();
