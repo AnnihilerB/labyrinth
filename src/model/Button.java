@@ -1,7 +1,7 @@
 package model;
 /**
  * The Button is an element which appears in the labyrinth and allows to open or close the linked door.
- * @author mduverneix
+ * @author Martial Duverneix
  *
  */
 public class Button extends InteractiveElement {

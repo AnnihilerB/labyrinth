@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * The Door is an element which appears in the labyrinth and allows to create a new labyrinth to continue to play after you passed it.
- * @author mduverneix
+ * @author Martial Duverneix
  *
  */
 public class Door extends InteractiveElement{
