@@ -1,21 +1,24 @@
 package model;
 /**
- * The Button is an element which appears in the labyrinth and allows to open or close the linked door.
+ * The Button is an element which appears in the labyrinth and allows to open a path in it.
  * @author Martial Duverneix
  *
  */
-public class Button extends InteractiveElement {
+public class Button extends Element {
 	/**
-	 * the door linked to the button which will get opened or closed.
+	 * the state of the button.
+	 * If the state is true, the button is on.
+	 * If the state is false, the button is off.
 	 */
-	private Door linkedDoor;
+	private boolean state;
 	/**
-	 * Allocates a new Button object with a chosen position and with the off mode (door closed).
+	 * Allocates a new Button object with a chosen position and with the off mode.
 	 * @param _x the x coordinate we want for the button.
 	 * @param _y the y coordinate we want for the button.
 	 */
 	public Button(int _x, int _y) {
 		super(_x,_y);
+		state=false;
 	}
 	/**
 	 * Allocates a new Button with a chosen position and state.
@@ -24,21 +27,22 @@ public class Button extends InteractiveElement {
 	 * @param _state the state we want for the button.
 	 */
 	public Button(int _x, int _y, boolean _state) {
-		super(_x, _y, _state);
+		super(_x, _y);
+		state=_state;;
 
 	}
 	/**
-	 * Gets the linked door.
-	 * @return the linked door.
+	 * Gets the state.
+	 * @return the state.
 	 */
-	public Door getLinkedDoor() {
-		return linkedDoor;
+	public boolean getState() {
+		return state;
 	}
 	/**
-	 * Sets a new linked Door.
-	 * @param linkedDoor the new linked door.
+	 * Sets the state.
+	 * @param state the state we want.
 	 */
-	public void setLinkedDoor(Door linkedDoor) {
-		this.linkedDoor = linkedDoor;
+	public void setState(boolean state) {
+		this.state = state;
 	}
 }
