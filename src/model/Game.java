@@ -22,15 +22,19 @@ public class Game {
 		labyrinth = Labyrinth.getInstance();
 		player = Player.getInstance();
 
-		candies = new HashMap();
-		enemies = new HashMap();
-		buttons = new HashMap();
+		candies = new HashMap<>();
+		enemies = new HashMap<>();
+		buttons = new HashMap<>();
 
 		generateCandies();
 		generateEnemies();
 		//generateButtons();
 
 		score = Score.getInstance();
+
+        int coordX = ThreadLocalRandom.current().nextInt(0, 16);
+        int coordY = ThreadLocalRandom.current().nextInt(0, 16);
+		this.door = Door.getInstance(coordX, coordY);
 	}
 	
 	public static Game getInstance() {
