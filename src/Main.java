@@ -14,8 +14,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Controller.makeInstance();
-		Controller.start(primaryStage);
+		Controller.makeInstance().start(primaryStage);
 	}
 
 	@Override
