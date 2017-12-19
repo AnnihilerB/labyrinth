@@ -1,10 +1,22 @@
-package model; 
+package model;
+
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * The Door is an element which appears in the labyrinth and allows to create a new labyrinth to continue to play after you passed it.
  * @author mduverneix
  *
  */
 public class Door extends InteractiveElement{
+
+	private static Door door;
+
+	public static Door getInstance(int x, int y){
+		if (door == null)
+			door = new Door(x, y);
+		return door;
+	}
+
 	/**
 	 * the button linked to the door which will close or open it.
 	 */
