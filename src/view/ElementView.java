@@ -7,7 +7,6 @@ import javafx.scene.layout.Pane;
 import java.io.File;
 
 public abstract class ElementView {
-	//TODO Centrer les elements
 	private ImageView sprite;
 	private double width, height;
 	

@@ -101,32 +101,44 @@ public class Labyrinth {
 		}
 	}
 
-	private void calculateManhattanDistance(Vertex source, Vertex target) {
-		Queue<Vertex> fifo = new ArrayDeque<Vertex>();
-		target.setNbr(1);
-		fifo.add(target);
-		while (!fifo.isEmpty()) {
-			Vertex actual = fifo.remove();
-			for (Directions dir : Directions.values()) {
-				if (this.isOpened(actual, dir)) {
-					Vertex next = getVertexByDir(actual, dir);
-					if (next.getNbr() == 0) {
-						next.setNbr(actual.getNbr() + 1);
-						if (next != source)
-							fifo.add(next);
-					}
-				}
-			}
-		}
-	}
+    public model.Vertex getVertex(int x, int y) {
+        Set<Vertex> setVertex = labyrinth.vertexSet();
+        for (Vertex vertex : setVertex) {
+            if (vertex.getX() == x && vertex.getY() == y)
+                return vertex;
+        }
+        return null;
+    }
+
+    private void calculateManhattanDistance(Vertex source, Vertex target) {
+        Queue<Vertex> fifo = new ArrayDeque<Vertex>();
+        target.setNbr(1);
+        fifo.add(target);
+        while (!fifo.isEmpty()) {
+            Vertex actual = fifo.remove();
+            for (Directions dir : Directions.values()) {
+                Set<Vertex> vertexs=labyrinth.vertexSet();
+                vertexs.forEach((s)->{System.out.println(s.getNbr());System.out.println(s);});
+                System.out.println(labyrinth.vertexSet());
+                if (this.isOpened(actual, dir)) {
+                    Vertex next = getVertexByDir(actual, dir);
+                    if (next.getNbr() == 0) {
+                        next.setNbr(actual.getNbr()+1);
+                        if (next != source)
+                            fifo.add(next);
+                    }
+                }
+            }
+        }
+    }
 
 
-	public void launchManhattan(Vertex source, Vertex target) {
-		for (Vertex vertex:
-				labyrinth.vertexSet())
-			vertex.setNbr(0);
-		calculateManhattanDistance(source, target);
-	}
+    public void launchManhattan(Vertex source, Vertex target) {
+        for (Vertex vertex : labyrinth.vertexSet())
+            vertex.setNbr(0);
+
+        calculateManhattanDistance(source, target);
+    }
 
 	public boolean isWall(Vertex vertex,Directions dir) {
 		Vertex dest = getVertexByDir(vertex, dir);
@@ -282,8 +294,16 @@ public class Labyrinth {
         return new Vertex(x,y);
     }
 
+    public void setLabyrinthGraph(SimpleGraph<Vertex, Edge> graph) {
+        this.labyrinth = graph;
+    }
+
+    public SimpleGraph<?, ?> getLabyrinthGraph() {
+        return this.labyrinth;
+    }
+
     public void reset(){
-		instance = new Labyrinth();
-	}
+        instance = new Labyrinth();
+    }
 
 }
