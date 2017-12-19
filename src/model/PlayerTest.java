@@ -57,8 +57,8 @@ public class PlayerTest {
 
     /**
      * Tests the collisions.
-     * First, we test if collisionWall(...) detect the wall at (1,0).
-     * Then, we test if collisionWall(...) detect that there is no wall at (0,1).
+     * First, we test if collisionWall(...) detects the wall at (1,0).
+     * Then, we test if collisionWall(...) detects that there is no wall at (0,1).
      */
 	@org.junit.Test
     public void testCollisionWall() {
