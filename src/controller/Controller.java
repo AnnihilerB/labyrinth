@@ -10,6 +10,7 @@ import view.LabyrinthView;
 import java.util.*;
 
 import view.ElementView;
+import view.MonsterView;
 
 public class Controller {
     private Stage stage;
@@ -135,19 +136,57 @@ public class Controller {
     public void moveEnemy(){
 		    threadMovement = new ArrayList();
 		    game.getEnemies().forEach((key, enemy) ->{
-		        ThreadMovementEnemy t = new ThreadMovementEnemy(game.getLabyrinth(), enemy, globalView.getMonsterViews().get(key), game.getPlayer());
+		        ThreadMovementEnemy t = new ThreadMovementEnemy((Enemy)enemy, globalView.getMonsterViews().get(key));
 		        threadMovement.add(t);
 		        Timer timer = new Timer();
-		        timer.scheduleAtFixedRate(t, 0, 1000);
+		        timer.scheduleAtFixedRate(t, 0, 500);
             });
     }
 
     public void stopMovements(){
 		    threadMovement.forEach(thread ->{
 		        System.out.println("Interrupted thread" + thread.toString());
-		        thread.setIsAlive(false);
             });
 		    threadMovement.clear();
-
     }
+
+
+    public class ThreadMovementEnemy extends TimerTask{
+
+		    Enemy enemy;
+		    MonsterView monsterView;
+
+		    public ThreadMovementEnemy(Enemy e, MonsterView monsterView){
+		        this.enemy = e;
+		        this.monsterView = monsterView;
+            }
+
+            @Override
+            public void run() {
+                game.getLabyrinth().launchManhattan(new Vertex(enemy.getX(), enemy.getY()), new Vertex(game.getPlayer().getX(), game.getPlayer().getY()));
+                moveManhattan();
+                monsterView.updatePosition(enemy.getX(), enemy.getY());
+        }
+
+        public void moveManhattan() {
+            Enemy e = enemy;
+            Vertex vertex = game.getLabyrinth().getVertex(enemy.getX(), enemy.getY());
+            for (Labyrinth.Directions dir : Labyrinth.Directions.values()) {
+                Vertex next = game.getLabyrinth().getVertexByDir(vertex, dir);
+                if (next == null)
+                    continue;
+                if (game.getLabyrinth().areVerticesConnected(vertex.getX(),vertex.getY(), next.getX(), next.getY()) && (next.getNbr() == vertex.getNbr() - 1)) {
+                    if (dir == Labyrinth.Directions.SOUTH)
+                        e.moves(e.getX(), e.getY() - 1);
+                    if (dir == Labyrinth.Directions.NORTH)
+                        e.moves(e.getX(), e.getY() + 1);
+                    if (dir == Labyrinth.Directions.WEST)
+                        e.moves(e.getX() - 1, e.getY() );
+                    if (dir == Labyrinth.Directions.EAST)
+                        e.moves(e.getX() + 1, e.getY() );
+                }
+            }
+        }
+    }
+
 }
