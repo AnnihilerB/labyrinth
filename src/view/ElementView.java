@@ -23,7 +23,6 @@ public abstract class ElementView {
 
     public void drawSprite(Pane pane, int x, int y) {		
     	pane.getChildren().add(this.sprite);
-    	
     	updatePosition(x, y);
     }
 
@@ -67,8 +66,12 @@ public abstract class ElementView {
     	
     	return displayPosition;
     }
-    
-    protected void updateSprite(File newSpritePath) {
+
+	protected ImageView getSprite() {
+		return sprite;
+	}
+
+	protected void updateSprite(File newSpritePath) {
     	sprite.setImage(new Image(newSpritePath.toURI().toString()));
     }
 }
