@@ -107,6 +107,11 @@ public class Game {
 		enemies = new HashMap();
 		buttons = new HashMap();
 
+		int coordX = ThreadLocalRandom.current().nextInt(0, 16);
+		int coordY = ThreadLocalRandom.current().nextInt(0, 16);
+		door.setX(coordX);
+		door.setY(coordY);
+
 		generateCandies();
 		generateEnemies();
 
