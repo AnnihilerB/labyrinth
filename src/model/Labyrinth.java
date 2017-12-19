@@ -282,4 +282,8 @@ public class Labyrinth {
         return new Vertex(x,y);
     }
 
+    public void reset(){
+		instance = new Labyrinth();
+	}
+
 }
