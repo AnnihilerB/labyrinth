@@ -37,8 +37,6 @@ public abstract class Character extends Element {
 			this.setX(_x);
 			this.setY(_y);
 		}
-		else
-			System.out.println("collision détecté");
 	}
 
 	
