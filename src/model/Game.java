@@ -100,6 +100,8 @@ public class Game {
 
 	public void resetGame(){
 		labyrinth.reset();
+		labyrinth = Labyrinth.getInstance();
+		System.out.println(labyrinth);
 		player.setX(0);
 		player.setY(0);
 
