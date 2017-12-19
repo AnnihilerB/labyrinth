@@ -108,4 +108,4 @@ public class LabyrinthView {
     public static int getHeight() {
     	return height;
     }
-}
+} 
