@@ -23,7 +23,7 @@ public class GlobalView {
     private HashMap<Integer, ButtonView> buttonViews;
 
 
-    static Pane pane = new Pane();
+    private Pane pane = new Pane();
 
     private GlobalView() {
         labyrinthView = LabyrinthView.getInstance();
@@ -69,7 +69,7 @@ public class GlobalView {
 
     public void createGlobalView(Stage stage, ArrayList<Integer> wallCoordinates){
         labyrinthView.drawFrame(stage, pane, 16,16);
-
+        System.out.println("CREATEGLOBALVIEW");
         for (int i = 0; i < wallCoordinates.size(); i+=4){
             labyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
         }
@@ -108,5 +108,7 @@ public class GlobalView {
 
     public void resetView(){
         pane.getChildren().clear();
+        System.out.println(pane.getChildren().size());
+        pane = new Pane();
     }
 }
