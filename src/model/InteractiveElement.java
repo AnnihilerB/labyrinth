@@ -1,12 +1,15 @@
 package model;
 /**
- * 
+ * The abstract class InteractiveElement is a superclass of Door and Button.
+ * It gives them the "state" attribute.
  * @author mduverneix
- *
+ * 
  */
 public abstract class InteractiveElement extends Element { // classe parent des boutons et des portes car variable etat en commun
 	/**
-	 * 
+	 * the state of the InteractiveElement.
+	 * If the state is true, the door is opened or the button is on.
+	 * If the state is false, the door is closed or the button is off.
 	 */
 	private boolean state; // etat de l'élément. On=true,ouverte ; Off=false,fermée
 	/**
@@ -19,7 +22,7 @@ public abstract class InteractiveElement extends Element { // classe parent des 
 		state=false;
 	}
 	/**
-	 * 
+	 * Sets the position of the interactive element on the x and y chosen and sets the state chosen.
 	 * @param _x the x coordinate we want for the interactive element.
 	 * @param _y the y coordinate we want for the interactive element.
 	 * @param _state the state we want for the interactive element.
@@ -29,15 +32,15 @@ public abstract class InteractiveElement extends Element { // classe parent des 
 		state=_state;
 	}
 	/**
-	 * 
-	 * @return
+	 * Gets the state.
+	 * @return the state.
 	 */
-	public boolean isState() {
+	public boolean getState() {
 		return state;
 	}
 	/**
-	 * 
-	 * @param state
+	 * Sets the state.
+	 * @param state the state we want.
 	 */
 	public void setState(boolean state) {
 		this.state = state;

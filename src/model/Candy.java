@@ -3,7 +3,7 @@ package model;
  * The Candy is an element which appears in the labyrinth and can be taken to increase the score.
  * @author mduverneix
  *
- */
+ */ 
 public class Candy extends Element {
 	/**
 	 * the number of points we want to add to the score.
@@ -38,7 +38,7 @@ public class Candy extends Element {
 	}
 	/**
 	 * Sets a new number of points.
-	 * @param ajoutPoint the new number of points.
+	 * @param numPoint the new number of points.
 	 */
 	public void setNumPoint(int numPoint) {
 		this.numPoint = numPoint;
