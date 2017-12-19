@@ -2,7 +2,7 @@ package model;
 
 /**
  * The abstract class Character is a superclass of all classes that can move on the labyrinth.
- * @author mduverneix
+ * @author Martial Duverneix
  *
  */
 public abstract class Character extends Element {
@@ -37,8 +37,6 @@ public abstract class Character extends Element {
 			this.setX(_x);
 			this.setY(_y);
 		}
-		else
-			System.out.println("collision détecté");
 	}
 
 	
