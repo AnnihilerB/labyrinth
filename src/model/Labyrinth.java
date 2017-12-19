@@ -16,7 +16,7 @@ import org.jgrapht.graph.SimpleGraph;
 
 public class Labyrinth {
 
-	private enum Directions {
+	public enum Directions {
 		NORTH,
 		EAST,
 		SOUTH,
@@ -34,7 +34,7 @@ public class Labyrinth {
 
 	//Constructeur privé (singleton design pattern)
 	private Labyrinth() {
-		labyrinth = new SimpleGraph(DefaultEdge.class);
+		labyrinth = new SimpleGraph(Edge.class);
 
 		Vertex startingCell = new Vertex();
 		labyrinth.addVertex(startingCell);
@@ -117,9 +117,6 @@ public class Labyrinth {
         while (!fifo.isEmpty()) {
             Vertex actual = fifo.remove();
             for (Directions dir : Directions.values()) {
-                Set<Vertex> vertexs=labyrinth.vertexSet();
-                vertexs.forEach((s)->{System.out.println(s.getNbr());System.out.println(s);});
-                System.out.println(labyrinth.vertexSet());
                 if (this.isOpened(actual, dir)) {
                     Vertex next = getVertexByDir(actual, dir);
                     if (next.getNbr() == 0) {
@@ -170,20 +167,20 @@ public class Labyrinth {
 		return ((edge!=null)&&((edge.getType()==Edge.Type.OPENED_DOOR)));
 	}
 
-	private Vertex getVertexByDir(Vertex vertex, Directions dir){
+	public Vertex getVertexByDir(Vertex vertex, Directions dir){
 		Vertex newvertex = null;
 		switch (dir){
 			case NORTH:
-				newvertex = new Vertex(vertex.getX(),vertex.getY()-1);
+				newvertex = getVertex(vertex.getX(),vertex.getY()+1);
 				break;
 			case SOUTH:
-				newvertex = new Vertex(vertex.getX(),vertex.getY()+1);
+				newvertex = getVertex(vertex.getX(),vertex.getY()-1);
 				break;
 			case EAST:
-				newvertex = new Vertex(vertex.getX()+1,vertex.getY());
+				newvertex = getVertex(vertex.getX()+1,vertex.getY());
 				break;
 			case WEST:
-				newvertex = new Vertex(vertex.getX()-1,vertex.getY());
+				newvertex = getVertex(vertex.getX()-1,vertex.getY());
 				break;
 		}
 		return newvertex;
