@@ -105,7 +105,7 @@ public class Vertex implements Comparable<Vertex> {
 	 */
 	@Override
 	public int compareTo(Vertex o) {
-		//used by Edge.compareTo()
+		//used by Edge.compareTo()		
 		return java.lang.Math.abs(this.x-o.getX()) + java.lang.Math.abs(this.y-o.getY());
 	}
 	
