@@ -45,4 +45,3 @@ public class Candy extends Element {
 	}
 	
 }
-// possibilité d'ajouter les cerises (en enfant) pour avoir la capacité de tuer les ennemis pendant un certain temps

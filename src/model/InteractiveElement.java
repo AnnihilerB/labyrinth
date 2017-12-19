@@ -5,19 +5,19 @@ package model;
  * @author mduverneix
  * 
  */
-public abstract class InteractiveElement extends Element { // classe parent des boutons et des portes car variable etat en commun
+public abstract class InteractiveElement extends Element {
 	/**
 	 * the state of the InteractiveElement.
 	 * If the state is true, the door is opened or the button is on.
 	 * If the state is false, the door is closed or the button is off.
 	 */
-	private boolean state; // etat de l'élément. On=true,ouverte ; Off=false,fermée
+	private boolean state;
 	/**
 	 * Sets the position of the interactive element on the x and y chosen and sets the state at false.
 	 * @param _x the x coordinate we want for the interactive element.
 	 * @param _y the y coordinate we want for the interactive element.
 	 */
-	public InteractiveElement(int _x, int _y) { // constructeur par défaut pour avoir la porte fermée ou le bouton éteint par défaut
+	public InteractiveElement(int _x, int _y) {
 		super(_x,_y);
 		state=false;
 	}
@@ -27,7 +27,7 @@ public abstract class InteractiveElement extends Element { // classe parent des 
 	 * @param _y the y coordinate we want for the interactive element.
 	 * @param _state the state we want for the interactive element.
 	 */
-	public InteractiveElement(int _x, int _y, boolean _state) { // constructeur pour choisir l'état initial
+	public InteractiveElement(int _x, int _y, boolean _state) {
 		super(_x, _y);
 		state=_state;
 	}

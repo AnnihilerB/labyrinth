@@ -20,7 +20,7 @@ public class Door extends InteractiveElement{
 	/**
 	 * the button linked to the door which will close or open it.
 	 */
-	private Button linkedButton; // bouton lié à la porte
+	private Button linkedButton;
 	/**
 	 * Allocates a new Door object with a chosen position, no linked button and opened by default.
 	 * @param _x the x coordinate we want for the door.
