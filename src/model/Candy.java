@@ -38,7 +38,7 @@ public class Candy extends Element {
 	}
 	/**
 	 * Sets a new number of points.
-	 * @param ajoutPoint the new number of points.
+	 * @param numPoint the new number of points.
 	 */
 	public void setNumPoint(int numPoint) {
 		this.numPoint = numPoint;
