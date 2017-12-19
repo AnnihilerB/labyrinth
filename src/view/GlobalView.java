@@ -186,7 +186,7 @@ public class GlobalView {
 
     /**
      * Remove a candy from display and from HashMap when picked up by the player.
-     * @param ident
+     * @param ident identifier of the candy
      */
     public void removeCandyFromView(int ident){
         pane.getChildren().remove(candyViews.get(ident).getSprite());

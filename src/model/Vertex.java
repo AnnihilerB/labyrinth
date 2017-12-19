@@ -88,7 +88,7 @@ public class Vertex implements Comparable<Vertex> {
 	 * by Objects.
 	 * 
 	 * @return 		the reference of an object.
-	 * @see java.util.Objects;
+	 * @see java.util.Objects
 	 */
 	@Override
 	public int hashCode() {

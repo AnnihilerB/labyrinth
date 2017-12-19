@@ -15,8 +15,21 @@ import java.io.File;
  */	
 
 public abstract class ElementView {
+	
+	/**
+	 * ImageView representing the sprite to display for this element.
+	 */
 	private ImageView sprite;
-	private double width, height;
+	
+	/**
+	 * Double representing the width of the element.
+	 */
+	private double width;
+	
+	/**
+	 * Double representing the height of the element.
+	 */
+	private double height;
 
 	
 	/** 

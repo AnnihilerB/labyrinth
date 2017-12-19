@@ -14,7 +14,14 @@ import java.io.File;
  */	
 
 public class ButtonView extends ElementView {
+	/**
+	 * String containing the pathname to the closed button image file.
+	 */
 	String closeButtonPath;
+	
+	/**
+	 * String containing the pathname to the opened button image file.
+	 */
 	String openButtonPath;
 	
 	

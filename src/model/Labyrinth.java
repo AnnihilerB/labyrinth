@@ -447,12 +447,18 @@ public class Labyrinth {
     }
 
     /**
-     * Resets the current instance of this class by calling the constructor once more.
+     * A getter used in the JUnit tests. We need it because we're using a Singleton design pattern
+     * for the Labyrinth.
+     *
+     * @return a SimpleGraph representing the Labyrinth.
      */
     public SimpleGraph<?, ?> getLabyrinthGraph() {
         return this.labyrinth;
     }
 
+    /**
+     * Resets the current instance of this class by calling the constructor once more.
+     */
     public void reset(){
         instance = new Labyrinth();
     }

@@ -15,6 +15,9 @@ import java.io.File;
 
 public class PlayerView extends ElementView {
 
+	/**
+	 * Current instance of this singleton class.
+	 */
 	static PlayerView playerView = null;
 
 	/**

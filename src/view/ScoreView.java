@@ -13,7 +13,14 @@ import javafx.scene.layout.Pane;
 
 public class ScoreView {
 
+	/**
+	 * Current instance of this singleton class.
+	 */
     private static ScoreView instance = null;
+    
+	/**
+	 * JavaFX Label used to display the score.
+	 */
     private static Label score;
 
 	/**

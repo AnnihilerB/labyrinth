@@ -1,12 +1,16 @@
 package model;
 
-
-import org.jgrapht.graph.DefaultEdge;
 import org.junit.Assert;
-import org.junit.Test;
 import static model.Labyrinth.Directions.*;
 
 import org.jgrapht.graph.SimpleGraph;
+
+
+/**
+ * JUnit test class for the Labyrinth class.
+ * 
+ * @author Pierre Lorson
+ */
 
 public class LabyrinthTest {
     static SimpleGraph<Vertex,Edge> graph;
@@ -36,7 +40,7 @@ public class LabyrinthTest {
         graph.addEdge(vertex11, vertex10);
 
         labyrinth.setLabyrinthGraph(graph);
-		}
+	}
 
     @org.junit.Test
     public void testIsClosed() {
