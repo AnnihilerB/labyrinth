@@ -268,20 +268,20 @@ public class Labyrinth {
      * @param	dir 	direction from the starting vertex
      * @return			the desired vertex if it exists
      */
-	private Vertex getVertexByDir(Vertex vertex, Directions dir){
+	public Vertex getVertexByDir(Vertex vertex, Directions dir){
 		Vertex newvertex = null;
 		switch (dir){
 			case NORTH:
-				newvertex = new Vertex(vertex.getX(),vertex.getY()-1);
+				newvertex = getVertex(vertex.getX(),vertex.getY()+1);
 				break;
 			case SOUTH:
-				newvertex = new Vertex(vertex.getX(),vertex.getY()+1);
+				newvertex = getVertex(vertex.getX(),vertex.getY()-1);
 				break;
 			case EAST:
-				newvertex = new Vertex(vertex.getX()+1,vertex.getY());
+				newvertex = getVertex(vertex.getX()+1,vertex.getY());
 				break;
 			case WEST:
-				newvertex = new Vertex(vertex.getX()-1,vertex.getY());
+				newvertex = getVertex(vertex.getX()-1,vertex.getY());
 				break;
 		}
 		return newvertex;
