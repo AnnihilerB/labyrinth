@@ -65,7 +65,6 @@ public class LabyrinthTest {
 
         Labyrinth lab = Labyrinth.getInstance();
         Assert.assertNotNull(lab);
-        System.out.println("test");
         Assert.assertTrue(lab instanceof Labyrinth);
     }
 }

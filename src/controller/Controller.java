@@ -106,7 +106,6 @@ public class Controller {
         this.stage = primaryStage;
 
         ArrayList wallCoordinates = generateWalls(game.getLabyrinth().getWalls());
-        System.out.println(game.getLabyrinth());
 
         game.getCandies().forEach((key, candy) -> globalView.addCandyView(key, candy.getX(), candy.getY()));
 
