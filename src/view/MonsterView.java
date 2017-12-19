@@ -4,7 +4,7 @@ import java.io.File;
 
 /** 
  * Sub-specification for ElementView meant to represent a monster.
- * Uses all functions made by its parent class but uses 
+ * Uses all functions made by its parent class but uses
  * an image of a monster as a graphical representation. 
  *
  * @author 			Teiki Pepin

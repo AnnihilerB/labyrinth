@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /** 
  * Sub-specification for ElementView meant to represent a random
- * candy. Uses all functions made by the its parent class but uses
+ * candy. Uses all functions made by its parent class but uses
  * an image of a candy as a graphical representation.
  *
  * @author 			Teiki Pepin
