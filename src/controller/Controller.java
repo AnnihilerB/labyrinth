@@ -74,6 +74,8 @@ public class Controller {
 
             game.getButtons().forEach((key, button)-> globalView.addEnemyView(button.getX(), button.getY()));
 
+            globalView.addDoorView(game.getDoor().getX(), game.getDoor().getY());
+
 
             globalView.createGlobalView(primaryStage, wallCoordinates);
             globalView.getLabyrinthView().setOnAction(keyboardListener);
