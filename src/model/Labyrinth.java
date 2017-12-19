@@ -23,17 +23,13 @@ import org.jgrapht.graph.SimpleGraph;
  */
 
 public class Labyrinth {
-
-
-
-
-
-        public enum Directions {
-            NORTH,
-            EAST,
-            SOUTH,
-            WEST,
-        }
+	
+    public enum Directions {
+        NORTH,
+        EAST,
+        SOUTH,
+        WEST,
+    }
 
 	private final static int NORTH_BORDER = 0;
 	private final static int EAST_BORDER = 15;
