@@ -3,7 +3,7 @@ package model;
  * The abstract class InteractiveElement is a superclass of Door and Button.
  * It gives them the "state" attribute.
  * @author mduverneix
- *
+ * 
  */
 public abstract class InteractiveElement extends Element { // classe parent des boutons et des portes car variable etat en commun
 	/**
