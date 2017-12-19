@@ -85,7 +85,7 @@ public class GlobalView {
 
     public void addEnemyView(int x, int y){
         MonsterView monsterView = new MonsterView();
-        monsterViews.put(0, monsterView);
+        monsterViews.put(monsterViews.size(), monsterView);
         monsterView.drawSprite(pane, x, y);
     }
 
@@ -95,6 +95,12 @@ public class GlobalView {
         buttonView.drawSprite(pane, x, y);
     }
 
+    public void addDoorView(int x, int y){
+        doorView = new DoorView();
+        doorView.drawSprite(pane, x, y);
+
+    }
+
     public void removeCandyFromView(int ident){
         pane.getChildren().remove(candyViews.get(ident).getSprite());
         candyViews.remove(ident);
@@ -102,13 +108,5 @@ public class GlobalView {
 
     public void resetView(){
         pane.getChildren().clear();
-    }
-
-    public void setStage(Stage primaryStage){
-        this.stage = primaryStage;
-    }
-
-    public Stage getStage(){
-        return this.stage;
     }
 }
