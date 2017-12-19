@@ -22,18 +22,46 @@ public class LabyrinthView {
     public static final Paint WALL_COLOR = Color.BURLYWOOD;
     private static LabyrinthView labyrinthView = new LabyrinthView();
 
+	/**
+	 * Empty private constructor.
+	 * Not to be explicitly used since this is meant as a singleton class.
+	 */
+    
     private LabyrinthView() {
     }
 
+
+	/**
+	 * Gets the current instance of the ScoreView.
+	 * 
+	 * @return the instance of the ScoreView.
+	 */
+	
     public static LabyrinthView getInstance() {
         return labyrinthView;
     }
 
+    /**
+     * Sets the EventHanGetter for the frame's width.dler for the scene.
+     * 
+     * @param 	eventHandler	the eventHandler responsible for updating the scene
+     */
+    
     public void setOnAction(EventHandler<KeyEvent> eventHandler){
         scene.setOnKeyPressed(eventHandler);
 
     }
 
+    
+	/**
+	 * This method draws the frame around the labyrinth.
+	 * 
+	 * @param	stage	the JavaFX Stage on which to add the pane
+	 * @param	pane	the JavaFX Pane on which to display the wall
+	 * @param	nbrX	the horizontal length of the labyrinth
+	 * @param	nbrY	the vertical length of the labyrinth
+	 */
+    
     public static void drawFrame(Stage stage, Pane pane, int nbrX, int nbrY) {
         width = ((WALL + CELL) * nbrX + WALL) * SPAN;
         height = ((WALL + CELL) * nbrY + WALL) * SPAN;
@@ -78,7 +106,19 @@ public class LabyrinthView {
         }
 
     }
+    
 
+	/**
+	 * This method draws a single wall between the specified coordinates.
+	 * 
+	 * @param	pane	the JavaFX Pane on which to display the wall
+	 * @param	xs		the source's horizontal axis coordinate
+	 * @param	xt		the source's vertical axis coordinate
+	 * @param	ys		the target's horizontal axis coordinate
+	 * @param	yt		the target's vertical axis coordinate
+	 * @param	color	the JavaFX color in which the wall is to be painted
+	 */
+    
     public static void drawWall(Pane pane, int xs, int ys, int xt, int yt, Paint color) {
         int x = 0, y = 0, xspan = 0, yspan = 0;
         if (ys == yt) {
@@ -92,7 +132,6 @@ public class LabyrinthView {
         } else if (xs == xt) {
             x = (WALL + xs*(WALL + CELL))*SPAN;
             y = ((WALL + CELL) + (WALL + CELL)*((int) (ys + yt) / 2))*SPAN;
-            ;
             xspan = CELL*SPAN;
             yspan = WALL*SPAN;
             Rectangle square = new Rectangle(x, y, xspan, yspan);
@@ -100,12 +139,26 @@ public class LabyrinthView {
             pane.getChildren().add(square);
         }
     }
+
+    
+	/**
+	 * Getter for the frame's width.
+	 * 
+	 * @return 		the width of the frame
+	 */
     
     public static int getWidth() {
     	return width;
     }
+
+    
+	/**
+	 * Getter for the frame's height.
+	 * 
+	 * @return 		the height of the frame
+	 */
     
     public static int getHeight() {
     	return height;
     }
-}
+} 
