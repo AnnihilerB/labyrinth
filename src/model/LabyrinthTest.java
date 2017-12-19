@@ -50,7 +50,6 @@ public class LabyrinthTest {
     }
 
 
-
     @org.junit.Test
     public void testIsWall() {
         Assert.assertTrue(labyrinth.isWall(vertex00, EAST));
