@@ -41,4 +41,8 @@ public class Score {
         return totalScore;
     }
 
+    public void resetScore(){
+        this.totalScore = 0;
+    }
+
 }

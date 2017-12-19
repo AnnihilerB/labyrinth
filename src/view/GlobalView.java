@@ -16,6 +16,7 @@ public class GlobalView {
     private PlayerView playerView;
     private DoorView doorView;
     private LabyrinthView labyrinthView;
+    private ScoreView scoreView;
 
 
     private HashMap<Integer, MonsterView> monsterViews;
@@ -33,6 +34,8 @@ public class GlobalView {
         buttonViews = new HashMap<>();
 
         playerView = PlayerView.getInstance();
+
+        scoreView = ScoreView.getInstance();
 
     }
 
@@ -66,14 +69,17 @@ public class GlobalView {
         return buttonViews;
     }
 
+    public ScoreView getScoreView() {
+        return scoreView;
+    }
 
     public void createGlobalView(Stage stage, ArrayList<Integer> wallCoordinates){
         labyrinthView.drawFrame(stage, pane, 16,16);
-        System.out.println("CREATEGLOBALVIEW");
         for (int i = 0; i < wallCoordinates.size(); i+=4){
             labyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
         }
         playerView.drawSprite(pane, 0, 0);
+        scoreView.createScoreView(pane);
 
     }
 

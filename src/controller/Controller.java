@@ -12,6 +12,9 @@ import java.util.*;
 import view.ElementView;
 import view.MonsterView;
 
+/**
+ * Class controlling and handling events between md
+ */
 public class Controller {
     private Stage stage;
 
@@ -30,24 +33,28 @@ public class Controller {
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(),game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
+                isGameOver();
                 break;
             case DOWN:
                 game.getPlayer().moves(game.getPlayer().getX(),game.getPlayer().getY()+1);
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(), game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
+                isGameOver();
                 break;
             case LEFT:
                 game.getPlayer().moves(game.getPlayer().getX()-1,game.getPlayer().getY());
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(), game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
+                isGameOver();
                 break;
             case RIGHT:
                 game.getPlayer().moves(game.getPlayer().getX()+1,game.getPlayer().getY());
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(), game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
+                isGameOver();
                 break;
 
         }
@@ -115,9 +122,12 @@ public class Controller {
                 iter.remove();
                 if (element instanceof Candy){
                     globalView.removeCandyFromView(entry.getKey());
+                    game.getScore().incrementScore();
+                    globalView.getScoreView().updateScore(game.getScore().getTotalScore());
                 }
                 if (element instanceof Enemy) {
                     game.resetGame();
+                    game.getScore().resetScore();
                     globalView.resetView();
                     stopMovements();
                     try {
@@ -127,13 +137,37 @@ public class Controller {
                         e1.printStackTrace();
                     }
                 }
-
             }
         }
         return 0;
     }
 
-    public void moveEnemy(){
+    private void isGameOver() {
+        int coordPlayerX = game.getPlayer().getX();
+        int coordPlayerY = game.getPlayer().getY();
+
+        if (coordPlayerX == game.getDoor().getX() && coordPlayerY == game.getDoor().getY()){
+            game.resetGame();
+            globalView.resetView();
+            stopMovements();
+            try {
+                stage.setScene(null);
+                start(this.stage);
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+    private void moveEnemy(){
 		    threadMovement = new ArrayList();
 		    game.getEnemies().forEach((key, enemy) ->{
 		        ThreadMovementEnemy t = new ThreadMovementEnemy((Enemy)enemy, globalView.getMonsterViews().get(key));
@@ -143,7 +177,7 @@ public class Controller {
             });
     }
 
-    public void stopMovements(){
+    private void stopMovements(){
 		    threadMovement.forEach(thread ->{
 		        System.out.println("Interrupted thread" + thread.toString());
             });
@@ -156,7 +190,7 @@ public class Controller {
 		    Enemy enemy;
 		    MonsterView monsterView;
 
-		    public ThreadMovementEnemy(Enemy e, MonsterView monsterView){
+		    private ThreadMovementEnemy(Enemy e, MonsterView monsterView){
 		        this.enemy = e;
 		        this.monsterView = monsterView;
             }
@@ -168,7 +202,7 @@ public class Controller {
                 monsterView.updatePosition(enemy.getX(), enemy.getY());
         }
 
-        public void moveManhattan() {
+        private void moveManhattan() {
             Enemy e = enemy;
             Vertex vertex = game.getLabyrinth().getVertex(enemy.getX(), enemy.getY());
             for (Labyrinth.Directions dir : Labyrinth.Directions.values()) {

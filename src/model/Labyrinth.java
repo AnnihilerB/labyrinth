@@ -352,7 +352,7 @@ public class Labyrinth {
      * @param 	ys	Vertical localisation of the source vertex
      * @param 	xt	Horizontal localisation of the target vertex
      * @param	yt	Vertical localisation of the target vertex
-     * @return		A boolean
+     * @return		True if the vertices are connected, false if they're not.
      */
 
     public boolean areVerticesConnected(int xs, int ys, int xt, int yt) {
