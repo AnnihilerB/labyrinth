@@ -83,7 +83,7 @@ public class Vertex implements Comparable<Vertex> {
 	}
 
 	/**
-	 * Method returning the reference for an object which is used
+	 * Method returning the hashed value for an object which is used
 	 * for comparisons. Makes uses of the hashing method provided 
 	 * by Objects.
 	 * 
