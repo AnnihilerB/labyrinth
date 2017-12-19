@@ -1,17 +1,39 @@
 package view;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Candy;
 
 public class GlobalView {
 
     private static GlobalView globalView = null;
-    private PlayerView playerView = null;
+
+    private Stage stage;
+
+    private PlayerView playerView;
+    private DoorView doorView;
+    private LabyrinthView labyrinthView;
+
+
+    private HashMap<Integer, MonsterView> monsterViews;
+    private HashMap<Integer, CandyView> candyViews;
+    private HashMap<Integer, ButtonView> buttonViews;
+
 
     static Pane pane = new Pane();
 
-    private GlobalView() {	
+    private GlobalView() {
+        labyrinthView = LabyrinthView.getInstance();
+
+        monsterViews = new HashMap<>();
+        candyViews = new HashMap<>();
+        buttonViews = new HashMap<>();
+
+        playerView = PlayerView.getInstance();
+
     }
 
     public static GlobalView getInstance() {
@@ -20,33 +42,73 @@ public class GlobalView {
         return globalView;
     }
 
+    public PlayerView getPlayerView() {
+        return playerView;
+    }
+
+    public DoorView getDoorView() {
+        return doorView;
+    }
+
+    public LabyrinthView getLabyrinthView() {
+        return labyrinthView;
+    }
+
+    public HashMap<Integer, MonsterView> getMonsterViews() {
+        return monsterViews;
+    }
+
+    public HashMap<Integer, CandyView> getCandyViews() {
+        return candyViews;
+    }
+
+    public HashMap<Integer, ButtonView> getButtonViews() {
+        return buttonViews;
+    }
+
+
     public void createGlobalView(Stage stage, ArrayList<Integer> wallCoordinates){
-        LabyrinthView.drawFrame(stage, pane, 16,16);
+        labyrinthView.drawFrame(stage, pane, 16,16);
 
         for (int i = 0; i < wallCoordinates.size(); i+=4){
-            LabyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
+            labyrinthView.drawWall(pane, wallCoordinates.get(i), wallCoordinates.get(i+1),wallCoordinates.get(i+2), wallCoordinates.get(i+3), LabyrinthView.WALL_COLOR);
         }
+        playerView.drawSprite(pane, 0, 0);
 
-        playerView = PlayerView.getInstance();
-        playerView.drawSprite(pane, (int)playerView.sprite.getX(), (int)playerView.sprite.getY());
-        
-        MonsterView monster = new MonsterView();
-        monster.drawSprite(pane, 12, 5);
-        
-        DoorView door = new DoorView();
-        door.drawSprite(pane, 15, 15);
-        
-        ButtonView button1 = new ButtonView();
-        button1.drawSprite(pane, 3, 3);
-        button1.openButton();
-        ButtonView button2 = new ButtonView();
-        button2.drawSprite(pane, 3, 4);
-        button2.closeButton();
-        
-        for(int i=0; i<16;i++) {
-	        CandyView candy = new CandyView();
-	        candy.drawSprite(pane, i, 8);
-        }
     }
-    
+
+    public void addCandyView(int ident, int x, int y){
+        CandyView candyView = new CandyView();
+        candyViews.put(ident, candyView);
+        candyView.drawSprite(pane, x, y);
+    }
+
+    public void addEnemyView(int x, int y){
+        MonsterView monsterView = new MonsterView();
+        monsterViews.put(0, monsterView);
+        monsterView.drawSprite(pane, x, y);
+    }
+
+    public void addButtonView(int x, int y){
+        ButtonView buttonView = new ButtonView();
+        buttonViews.put(0, buttonView);
+        buttonView.drawSprite(pane, x, y);
+    }
+
+    public void removeCandyFromView(int ident){
+        pane.getChildren().remove(candyViews.get(ident).getSprite());
+        candyViews.remove(ident);
+    }
+
+    public void resetView(){
+        pane.getChildren().clear();
+    }
+
+    public void setStage(Stage primaryStage){
+        this.stage = primaryStage;
+    }
+
+    public Stage getStage(){
+        return this.stage;
+    }
 }
