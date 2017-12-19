@@ -25,25 +25,25 @@ public class Controller {
 
             case UP:
                 // Déplacement du personnage
-                game.getPlayer().seDeplacer(game.getPlayer().getX(),game.getPlayer().getY()-1);
+                game.getPlayer().moves(game.getPlayer().getX(),game.getPlayer().getY()-1);
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(),game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
                 break;
             case DOWN:
-                game.getPlayer().seDeplacer(game.getPlayer().getX(),game.getPlayer().getY()+1);
+                game.getPlayer().moves(game.getPlayer().getX(),game.getPlayer().getY()+1);
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(), game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
                 break;
             case LEFT:
-                game.getPlayer().seDeplacer(game.getPlayer().getX()-1,game.getPlayer().getY());
+                game.getPlayer().moves(game.getPlayer().getX()-1,game.getPlayer().getY());
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(), game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
                 break;
             case RIGHT:
-                game.getPlayer().seDeplacer(game.getPlayer().getX()+1,game.getPlayer().getY());
+                game.getPlayer().moves(game.getPlayer().getX()+1,game.getPlayer().getY());
                 globalView.getPlayerView().updatePosition(game.getPlayer().getX(), game.getPlayer().getY());
                 areColliding(game.getCandies());
                 areColliding(game.getEnemies());
@@ -114,7 +114,11 @@ public class Controller {
                 if (e instanceof Enemy) {
                     game.resetGame();
                     globalView.resetView();
-                    start(this.stage);
+                    try {
+                        start(this.stage);
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
                 }
 
             }
