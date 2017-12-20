@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.Candy;
 
 /**
  * Class handling the display of every element of the game.
@@ -26,7 +25,7 @@ public class GlobalView {
     /**
      * HashMap containing every monsterView
      */
-    private HashMap<Integer, MonsterView> monsterViews;
+    private HashMap<Integer, EnemyView> monsterViews;
     /**
      * HashMap containing every candyView
      */
@@ -95,7 +94,7 @@ public class GlobalView {
      * return an hashmap of monsterView
      * @return the hashmap containing every monserView.
      */
-    public HashMap<Integer, MonsterView> getMonsterViews() {
+    public HashMap<Integer, EnemyView> getMonsterViews() {
         return monsterViews;
     }
 
@@ -157,9 +156,10 @@ public class GlobalView {
      * @param y Y coordinate
      */
     public void addEnemyView(int x, int y){
-        MonsterView monsterView = new MonsterView();
-        monsterViews.put(monsterViews.size(), monsterView);
-        monsterView.drawSprite(pane, x, y);
+        EnemyView enemyView = new EnemyView();
+        //Puts the enemy in 0, 1, 2,....
+        monsterViews.put(monsterViews.size(), enemyView);
+        enemyView.drawSprite(pane, x, y);
     }
 
     /**

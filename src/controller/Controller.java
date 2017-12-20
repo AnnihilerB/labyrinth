@@ -4,13 +4,10 @@ import model.*;
 import javafx.event.*;
 import javafx.scene.input.*;
 import javafx.stage.Stage;
+import view.EnemyView;
 import view.GlobalView;
-import view.LabyrinthView;
 
 import java.util.*;
-
-import view.ElementView;
-import view.MonsterView;
 
 /**
  * Class controlling and handling events between model (eg. the game) and the view.
@@ -105,8 +102,10 @@ public class Controller {
     public void start(Stage primaryStage){
         this.stage = primaryStage;
 
+        //Getting the walls coordinates.
         ArrayList wallCoordinates = generateWalls(game.getLabyrinth().getWalls());
 
+        //Gather the model elements and creates the corresponding views.
         game.getCandies().forEach((key, candy) -> globalView.addCandyView(key, candy.getX(), candy.getY()));
 
         game.getEnemies().forEach((key, enemy) -> globalView.addEnemyView(enemy.getX(), enemy.getY()));
@@ -223,6 +222,7 @@ public class Controller {
 
     /**
      * Cancels any enemy movements by shutting down every threads.
+     * The Arraylist of threads is emptied afterwards.
      */
     private void stopMovements() {
         threadMovement.forEach(thread -> {
@@ -238,31 +238,31 @@ public class Controller {
     public class ThreadMovementEnemy extends TimerTask {
 
         Enemy enemy;
-        MonsterView monsterView;
+        EnemyView enemyView;
 
         /**
          * Create a thread for an enemy.
          * @param e enemy to move
-         * @param monsterView view to update when a move is done.
+         * @param enemyView view to update when a move is done.
          */
-        private ThreadMovementEnemy(Enemy e, MonsterView monsterView) {
+        private ThreadMovementEnemy(Enemy e, EnemyView enemyView) {
             this.enemy = e;
-            this.monsterView = monsterView;
+            this.enemyView = enemyView;
         }
 
         /**
-         * Routine to execute perodically.
+         * Routine to execute periodically.
          */
         @Override
         public void run() {
             game.getLabyrinth().launchManhattan(new Vertex(enemy.getX(), enemy.getY()), new Vertex(game.getPlayer().getX(), game.getPlayer().getY()));
             moveManhattan();
-            monsterView.updatePosition(enemy.getX(), enemy.getY());
+            enemyView.updatePosition(enemy.getX(), enemy.getY());
         }
 
 
         /**
-         * Computes the direciton for the enemy to mave to thanks to the manhattan distance.
+         * Computes the direction for the enemy to make to thanks to the manhattan distance.
          */
         private void moveManhattan() {
             Enemy e = enemy;

@@ -11,7 +11,7 @@ import java.io.File;
  * @see 			view.ElementView
  */	
 
-public class MonsterView extends ElementView {
+public class EnemyView extends ElementView {
 
 	/** 
 	 * Returns a File object that points to an image file representing
