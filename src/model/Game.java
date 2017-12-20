@@ -8,6 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
  * Class keeping an single instance of game.
  * Creates every element needed for a game such as a player, enemies, candies and the labyrinth.
  *
+ * @author Ali CHERIFI
+ *
  */
 public class Game {
 	/**

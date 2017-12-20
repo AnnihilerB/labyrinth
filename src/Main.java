@@ -6,14 +6,12 @@ import model.Labyrinth;
 
 public class Main extends Application {
 
-	static Controller controller;
-
 	public static void main(String args[]) {		
 		launch();		
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage){
 		Controller.makeInstance().start(primaryStage);
 	}
 

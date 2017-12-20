@@ -41,6 +41,9 @@ public class Score {
         return totalScore;
     }
 
+    /**
+     * Set back the score to 0 when the player loses.
+     */
     public void resetScore(){
         this.totalScore = 0;
     }

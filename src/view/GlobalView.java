@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 /**
  * Class handling the display of every element of the game.
  * Dsiplays monsters, scores, candys and door.
+ *
+ * @author Ali CHERIFI
  */
 public class GlobalView {
     /**

@@ -13,6 +13,8 @@ import java.util.*;
  * Class controlling and handling events between model (eg. the game) and the view.
  * This class acts like a third person avoiding direct communication between model and view.
  * It contains a reference to Game and one to the view.
+ *
+ * @author Ali CHERIFI
  */
 public class Controller {
     private Stage stage;
@@ -114,10 +116,12 @@ public class Controller {
 
         globalView.addDoorView(game.getDoor().getX(), game.getDoor().getY());
 
-
+        //Draw labyrinth on the board
         globalView.createGlobalView(primaryStage, wallCoordinates);
+        //Setup actionListener
         globalView.getLabyrinthView().setOnAction(keyboardListener);
         primaryStage.show();
+        //Launches threads for moving enemies
         moveEnemy();
     }
 
