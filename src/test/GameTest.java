@@ -1,6 +1,10 @@
-package model;
+package test;
 
 
+import model.Element;
+import model.Game;
+import model.Labyrinth;
+import model.Player;
 import org.junit.Assert;
 
 import java.util.HashMap;
@@ -8,8 +12,6 @@ import java.util.HashMap;
 public class GameTest {
 
     private static Game game;
-
-
 
     @org.junit.BeforeClass
     public static void generateGame(){

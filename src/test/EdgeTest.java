@@ -1,7 +1,9 @@
-package model;
+package test;
 
 import static org.junit.Assert.*;
 
+import model.Edge;
+import model.Vertex;
 import org.jgrapht.graph.SimpleGraph;
 import org.junit.Test;
 

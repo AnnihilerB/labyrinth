@@ -1,5 +1,9 @@
-package model;
+package test;
 
+import model.Edge;
+import model.Labyrinth;
+import model.Player;
+import model.Vertex;
 import org.jgrapht.graph.DefaultEdge;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +17,7 @@ public class PlayerTest {
 	/**
 	 * the SimpleGraph which allows us to test a specific labyrinth.
 	 */
-	static SimpleGraph<Vertex,Edge> graph;
+	static SimpleGraph<Vertex, Edge> graph;
 	/**
 	 * the first vertex of our SimpleGraph.
 	 */

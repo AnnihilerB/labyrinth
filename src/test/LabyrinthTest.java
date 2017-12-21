@@ -1,5 +1,8 @@
-package model;
+package test;
 
+import model.Edge;
+import model.Labyrinth;
+import model.Vertex;
 import org.junit.Assert;
 import static model.Labyrinth.Directions.*;
 
@@ -13,7 +16,7 @@ import org.jgrapht.graph.SimpleGraph;
  */
 
 public class LabyrinthTest {
-    static SimpleGraph<Vertex,Edge> graph;
+    static SimpleGraph<Vertex, Edge> graph;
 	static Labyrinth labyrinth;
 	static Vertex vertex00;
 	static Vertex vertex01;

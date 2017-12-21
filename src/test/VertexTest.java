@@ -1,7 +1,8 @@
-package model;
+package test;
 
 import static org.junit.Assert.*;
 
+import model.Vertex;
 import org.junit.Test;
 
 /**
